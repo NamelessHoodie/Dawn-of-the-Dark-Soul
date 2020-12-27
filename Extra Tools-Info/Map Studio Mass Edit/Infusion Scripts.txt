@@ -117,3 +117,23 @@ param EquipParamWeapon: id 22180600: Unk26: = 0;
 param EquipParamWeapon: id 22180600: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseFire to the same value of atkBasePhysics)
+
+---------------------------------------------------------------------------------------------------------
+
+Chaos Gem Infusion Map Studio Mass Edit Script:
+
+param EquipParamWeapon: id 22180700: materialSetId: = 700;
+param EquipParamWeapon: id 22180700: reinforceTypeId: = 700;
+param EquipParamWeapon: id 22180700: correctType: = 0;
+param EquipParamWeapon: id 22180700: spAttribute: = 2;
+param EquipParamWeapon: id 22180700: baseChangeCategory: = 1;
+param EquipParamWeapon: id 22180700: isDragonSlayer: = 1;
+param EquipParamWeapon: id 22180700: isDeposit: = 1;
+param EquipParamWeapon: id 22180700: disableMultiDropShare: = 0;
+param EquipParamWeapon: id 22180700: Unk21: = 0;
+param EquipParamWeapon: id 22180700: Unk22: = 4;
+param EquipParamWeapon: id 22180700: Unk23: = 0;
+param EquipParamWeapon: id 22180700: Unk26: = 0;
+param EquipParamWeapon: id 22180700: attackElementCorrectId: = 10000;
+
+(Remember to set atkBaseFire to the same value of atkBasePhysics)
