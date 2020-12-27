@@ -3,7 +3,7 @@ Preinfusion scripts:
 param EquipParamWeapon: id 2218\d\d\d\d: corretMagic: = 90;
 param EquipParamWeapon: id 2218\d\d\d\d: corretFaith: = 90;
 
----
+---------------------------------------------------------------------------------------------------------
 
 Heavy Infusion Map Studio Mass Edit Script:
 
