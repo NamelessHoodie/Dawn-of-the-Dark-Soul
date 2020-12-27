@@ -1,0 +1,21 @@
+Preinfusion scripts:
+
+param EquipParamWeapon: id 2218\d\d\d\d: corretMagic: = 90;
+param EquipParamWeapon: id 2218\d\d\d\d: corretFaith: = 90;
+
+---
+
+Heavy Infusion Map Studio Mass Edit Script:
+
+param EquipParamWeapon: id 22180100: reinforceTypeId: = 100;
+param EquipParamWeapon: id 22180100: materialSetId: = 200;
+param EquipParamWeapon: id 22180100: correctType: = 1;
+param EquipParamWeapon: id 22180100: baseChangeCategory: = 1;
+param EquipParamWeapon: id 22180100: isDragonSlayer: = 0;
+param EquipParamWeapon: id 22180100: isDeposit: = 0;
+param EquipParamWeapon: id 22180100: disableMultiDropShare: = 0;
+param EquipParamWeapon: id 22180100: Unk21: = 0;
+param EquipParamWeapon: id 22180100: Unk22: = 0;
+param EquipParamWeapon: id 22180100: Unk23: = 0;
+param EquipParamWeapon: id 22180100: Unk26: = 0;
+param EquipParamWeapon: id 22180100: attackElementCorrectId: = 10000;
