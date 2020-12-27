@@ -403,6 +403,7 @@ function GetEquipType(hand, ...)
             end
         end
     end
+        return FALSE
 end
 
 function GetWeaponChangeType(hand)
@@ -514,6 +515,7 @@ function GetAttackRequest(is_guard)
     if style == HAND_LEFT_BOTH then
         hand = HAND_LEFT
     end
+    local is_L_Rapier = GetEquipType(HAND_LEFT, 27)
     local is_arrow = GetEquipType(hand, WEAPON_CATEGORY_SMALL_ARROW, WEAPON_CATEGORY_LARGE_ARROW)
     local is_crossbow = GetEquipType(hand, WEAPON_CATEGORY_CROSSBOW)
     local is_staff = GetEquipType(hand, WEAPON_CATEGORY_STAFF)
@@ -592,7 +594,7 @@ function GetAttackRequest(is_guard)
             end
         end
         local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
-        if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 then
+        if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 158 then
             return ATTACK_REQUEST_INVALID
         elseif sp_kind == 257 and env(1116, 100580) == FALSE then
             return ATTACK_REQUEST_INVALID
@@ -625,9 +627,15 @@ function GetAttackRequest(is_guard)
         end
         if is_both == FALSE then
             local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
-            if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+        -- DW
+        -- Parrying Dagger left hand attack L1 chain a071
+            if isOffHandCombo() == DWRapier then
+                return ATTACK_REQUEST_BOTH_LEFT
+            elseif sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 or sp_kind == 71 then
                 return ATTACK_REQUEST_LEFT_HEAVY
-            elseif sp_kind == 99 or sp_kind == 101 or sp_kind == 137 or sp_kind == 151 or sp_kind == 164 or sp_kind == 218 then
+            elseif is_L_Rapier == TRUE then
+                return ATTACK_REQUEST_LEFT_HEAVY_SP
+            elseif sp_kind == 99 or sp_kind == 101 or sp_kind == 137 or sp_kind == 151 or sp_kind == 164 then
                 return ATTACK_REQUEST_LEFT_HEAVY_SP
             end
         end
@@ -655,7 +663,7 @@ function GetAttackRequest(is_guard)
                 return ATTACK_REQUEST_ARROW_BOTH_LEFT
             end
             local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
-            if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+            if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
                 return ATTACK_REQUEST_INVALID
             end
         end
@@ -795,14 +803,15 @@ function SetSwordArtsPointInfo(button, is_point_consume)
         act("アーツポイント使用予約", button, hand)
     end
     local sel = 0
+    -- NoPoints WA's disable
     if env("アーツポイント足りるか", button, hand) == FALSE then
-        sel = 1
+        sel = 1 -- Original = 1
     elseif env(311, hand) == 0 then
-        sel = 1
+        sel = 1 -- Original = 1
     elseif env(262, hand) == TRUE then
-        sel = 1
+        sel = 1 -- Original = 1
     elseif c_SwordArtsID == SWORDARTS_MAGICBUFFPRAY and env(1116, 135000) == FALSE then
-        sel = 1
+        sel = 1 -- Original = 1
     end
     local val = "IsEnoughArtPointsL2"
     if button == ACTION_ARM_R1 then
@@ -899,7 +908,7 @@ function IsEnableSwordArts()
     local arts_id = c_SwordArtsID
     local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
     if style ~= HAND_LEFT_BOTH and c_SwordArtsHand == 0 then
-        if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+        if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
             return FALSE
         elseif arts_id == SWORDARTS_PARRY or arts_id == SWORDARTS_SPIN or arts_id == SWORDARTS_STRONGBASH or arts_id == SWORDARTS_CHAINSHOT or arts_id == SWORDARTS_MAGICBUFF or arts_id == SWORDARTS_SAMAGIC or arts_id == SWORDARTS_CHARGESHOT or arts_id == SWORDARTS_ONESHOTFULL or arts_id == SWORDARTS_STRONGSHOT or arts_id == SWORDARTS_SAMAGICMEDIUM or arts_id == SWORDARTS_SAMAGICSTRONG or arts_id == SWORDARTS_WIDESHOT or arts_id == SWORDARTS_MAGICBUFFPRAY or arts_id == SWORDARTS_MAGICBUFFATTACK then
             return TRUE
@@ -1066,6 +1075,7 @@ end
 function IsEnableGuard()
     local style = c_Style
     local hand = HAND_LEFT
+    local is_L_Rapier = GetEquipType(HAND_LEFT, 27)
     if style == HAND_RIGHT_BOTH then
         hand = HAND_RIGHT
     end
@@ -1075,9 +1085,13 @@ function IsEnableGuard()
             return FALSE
         elseif sp_kind == 123 then
             return TRUE
-        elseif sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+        elseif sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
             return FALSE
-        elseif sp_kind == 99 or sp_kind == 101 or sp_kind == 137 or sp_kind == 151 or sp_kind == 164 or sp_kind == 218 then
+        -- Rapiers - Disable block
+        elseif is_L_Rapier == TRUE then
+            return FALSE
+        -- Parrying Dagger disable guard enable attack
+        elseif sp_kind == 99 or sp_kind == 101 or sp_kind == 137 or sp_kind == 151 or sp_kind == 164 or sp_kind == 71 then
             return FALSE
         end
     end
@@ -1116,7 +1130,7 @@ function IsWarcrySpAtk()
     if style == HAND_LEFT_BOTH then
         offset = 50
     end
-    local buff = {1062301, 1062311, 1070101, 1070111, 1070401, 1070411, 1070501, 1070511, 1080001, 1080011, 1080601, 1080611, 1083201, 1092401, 1092411}
+    local buff = {1062300 ,1062301, 1062311, 1070101, 1070111, 1070401, 1070411, 1070501, 1070511, 1080001, 1080011, 1080601, 1080611, 1083201, 1092401, 1092411}
     for local0 = 1, #buff, 1 do
         if env(1116, buff[local0] + offset) == TRUE then
             return TRUE
@@ -1364,14 +1378,28 @@ function ExecAttack(r1, r2, l1, l2, b1, b2, is_guard, blend_type, artsr1, artsr2
         b1 = "W_AttackBothLight1"
         b2 = "W_AttackBothHeavy1Start"
     end
+    -- Warcry Attacks Here
     if request == ATTACK_REQUEST_RIGHT_LIGHT then
         if artsr1 == TRUE then
             SetSwordArtsPointInfo(ACTION_ARM_R1, TRUE)
         end
+		if IsWarcrySpAtk() == TRUE then
+            if r1 == "W_AttackRightLight1" then
+                r1 = "W_AttackRightLight1"
+            end
+		end
         if IsArtsSpAtk() == TRUE and r1 == "W_AttackRightLightStep" then
             r1 = "W_AttackRightLightStepSpecial"
         end
-        ExecEventAllBody(r1)
+        -- Trick - If you're not holding a trick weapon, then the variable "Trick" equals "FALSE"
+        if isTrickWeapon() == FALSE then Trick = FALSE 
+        end
+        -- Trick - if the variable "Trick" equals "TRUE" and the function "isTrickWeapon()" returns "TRUE" then 1H R1 becomes 2H R1
+        if Trick == TRUE and isTrickWeapon() == TRUE then 
+            ExecEventAllBody(b1)
+      else
+         ExecEventAllBody(r1) 
+      end
     elseif request == ATTACK_REQUEST_LIGHT_KICK then
         if HAND_LEFT_BOTH <= style then
             ExecEventAllBody("W_AttackBothLightKick")
@@ -1382,7 +1410,17 @@ function ExecAttack(r1, r2, l1, l2, b1, b2, is_guard, blend_type, artsr1, artsr2
         if artsr2 == TRUE then
             SetSwordArtsPointInfo(ACTION_ARM_R2, TRUE)
         end
-        if IsWarcrySpAtk() == TRUE then
+        local hand = HAND_RIGHT
+        local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+        if IsWarcrySpAtk() == TRUE and sp_kind == 161 then
+            if r2 == "W_AttackRightHeavy1Start" then
+               r2 = "W_AttackRightHeavy1Start"
+            elseif r2 == "W_AttackRightHeavy1SubStart" then
+                r2 = "W_AttackRightHeavy1SubStart"
+            elseif r2 == "W_AttackRightHeavy2Start" then
+                r2 = "W_AttackRightHeavy2Start"
+            end
+        elseif IsWarcrySpAtk() == TRUE then
             if r2 == "W_AttackRightHeavy1Start" then
                 r2 = "W_AttackRightHeavySpecial1Start"
             elseif r2 == "W_AttackRightHeavy1SubStart" then
@@ -1399,7 +1437,15 @@ function ExecAttack(r1, r2, l1, l2, b1, b2, is_guard, blend_type, artsr1, artsr2
                 r2 = "W_AttackRightHeavyWepBroken2Start"
             end
         end
-        ExecEventAllBody(r2)
+        -- Trick - If you're not holding a trick weapon, then the variable "Trick" equals "FALSE"
+        if isTrickWeapon() == FALSE then Trick = FALSE 
+        end
+        -- Trick - if the variable "Trick" equals "TRUE" and the function "isTrickWeapon()" returns "TRUE" then 1H R2 becomes 2H R2
+        if Trick == TRUE and isTrickWeapon() == TRUE then 
+            ExecEventAllBody(b2)
+        else
+         ExecEventAllBody(r2) 
+        end
     elseif request == ATTACK_REQUEST_HEAVY_KICK then
         if HAND_LEFT_BOTH <= style then
             if IsArtsSpAtk() == TRUE then
@@ -1409,9 +1455,15 @@ function ExecAttack(r1, r2, l1, l2, b1, b2, is_guard, blend_type, artsr1, artsr2
             end
         elseif IsArtsSpAtk() == TRUE then
             ExecEventAllBody("W_AttackRightHeavyKickSpecial")
+        -- Trick - if the variable "Trick" equals "TRUE" and the function "isTrickWeapon()" returns "TRUE" then 1H Leap Attack Becomes 2H Leap Attack
+        elseif Trick == TRUE and isTrickWeapon() == TRUE then
+            ExecEventAllBody("W_AttackBothHeavyKick")
         else
             ExecEventAllBody("W_AttackRightHeavyKick")
         end
+    elseif request == ATTACK_REQUEST_LEFT_LIGHT then
+        atk_hand = HAND_LEFT
+        ExecEventAllBody(l1)
     elseif request == ATTACK_REQUEST_LEFT_LIGHT then
         atk_hand = HAND_LEFT
         ExecEventAllBody(l1)
@@ -1446,12 +1498,23 @@ function ExecAttack(r1, r2, l1, l2, b1, b2, is_guard, blend_type, artsr1, artsr2
         elseif l1 == "W_AttackLeftLight2" then
             l1 = "W_AttackBothLeft2"
         end
+
         ExecEventAllBody(l1)
     elseif request == ATTACK_REQUEST_BOTH_HEAVY then
         if artsr2 == TRUE then
             SetSwordArtsPointInfo(ACTION_ARM_R2, TRUE)
         end
-        if IsWarcrySpAtk() == TRUE then
+        local hand = HAND_RIGHT
+        local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+        if IsWarcrySpAtk() == TRUE and sp_kind == 161 then
+            if b2 == "W_AttackBothHeavy1Start" then
+               b2 = "W_AttackBothHeavy1Start"
+            elseif r2 == "W_AttackBothHeavy1SubStart" then
+                r2 = "W_AttackBothHeavy1SubStart"
+            elseif r2 == "W_AttackBothHeavy2Start" then
+                r2 = "W_AttackBothHeavy2Start"
+            end
+        elseif IsWarcrySpAtk() == TRUE then
             if b2 == "W_AttackBothHeavy1Start" then
                 b2 = "W_AttackBothHeavySpecial1Start"
             elseif b2 == "W_AttackBothHeavy1SubStart" then
@@ -1587,7 +1650,13 @@ function ExecAttack(r1, r2, l1, l2, b1, b2, is_guard, blend_type, artsr1, artsr2
         if IsNodeActive("AttackSpinStart_CMSG", "AttackSpinLight_CMSG", "AttackSpinHeavy_CMSG") ~= TRUE then
             SetArtsGeneratorTransitionIndex(GEN_TRANS_LEFT, FALSE)
         end
+        -- Trick - Spin slash to stomp
+        if env(345, HAND_RIGHT) == 268 and Trick == TRUE then -- it means if TAE Right hand = 799 and hand isn't both
+            ExecEventAllBody("W_OneShotNoGenTransStart") -- My one handed Weapon Art
+            return FALSE
+        else
         ExecEventHalfBlend(Event_AttackSpinStart, ALLBODY)
+        end
     elseif request == SWORDARTS_REQUEST_RIGHT_WARCRY or request == SWORDARTS_REQUEST_LEFT_WARCRY then
         is_find_atk = FALSE
         is_atk_auto_aim = FALSE
@@ -2147,7 +2216,7 @@ function ExecMagic(quick_type, blend_type)
             return FALSE
         elseif style == HAND_LEFT_BOTH then
             local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
-            if sp_kind ~= 178 and sp_kind ~= 207 and sp_kind ~= 217 and sp_kind ~= 220 and sp_kind ~= 234 and sp_kind ~= 257 then
+            if sp_kind ~= 178 and sp_kind ~= 207 and sp_kind ~= 217 and sp_kind ~= 220 and sp_kind ~= 234 and sp_kind ~= 257 and sp_kind ~= 158 then
                 return FALSE
             elseif sp_kind == 257 and env(1116, 100580) == TRUE then
                 return FALSE
@@ -2155,7 +2224,7 @@ function ExecMagic(quick_type, blend_type)
             SetAttackHand(HAND_LEFT)
         else
             local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_RIGHT)
-            if sp_kind ~= 178 and sp_kind ~= 207 and sp_kind ~= 217 and sp_kind ~= 220 and sp_kind ~= 234 and sp_kind ~= 257 then
+            if sp_kind ~= 178 and sp_kind ~= 207 and sp_kind ~= 217 and sp_kind ~= 220 and sp_kind ~= 234 and sp_kind ~= 257 and sp_kind ~= 158 then
                 return FALSE
             elseif sp_kind == 257 and env(1116, 100580) == TRUE then
                 return FALSE
@@ -2177,7 +2246,7 @@ function ExecMagic(quick_type, blend_type)
             end
         elseif style == HAND_RIGHT then
             local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
-            if sp_kind ~= 178 and sp_kind ~= 207 and sp_kind ~= 217 and sp_kind ~= 220 and sp_kind ~= 234 and sp_kind ~= 257 then
+            if sp_kind ~= 178 and sp_kind ~= 207 and sp_kind ~= 217 and sp_kind ~= 220 and sp_kind ~= 234 and sp_kind ~= 257 and sp_kind ~= 158 then
                 return FALSE
             end
             SetAttackHand(HAND_LEFT)
@@ -2864,6 +2933,7 @@ function ExecLadderItem(hand)
 end
 
 function ExecWeaponChange(blend_type)
+    local style = c_Style
     if c_HasActionRequest == FALSE then
         return FALSE
     end
@@ -2882,12 +2952,46 @@ function ExecWeaponChange(blend_type)
     if blend_type == ALLBODY and MoveStart(LOWER, Event_MoveLong, FALSE) == TRUE then
         blend_type = UPPER
     end
+    -- Trick - If the function "isTrickWeapon()" returns "TRUE" and the variable "TRICK" equals "TRUE", then If you try to weaponchange, this will first untrick the weapon. Then weapon change
+    if isTrickWeapon() == TRUE and Trick == TRUE then
+        -- If the weapon is one handed then proceed 
+        if style == HAND_RIGHT then
+            -- If you press the change weapon key, untrick and then the variable "TWChangeWeapon" equals "TRUE"
+            if  env(1106, ACTION_ARM_CHANGE_WEAPON_R) == TRUE then			
+                TWChangeWeapon = TRUE
+                ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+            elseif  env(1106, ACTION_ARM_CHANGE_WEAPON_L) == TRUE then			
+                ExecEventHalfBlend(Event_WeaponChangeStart, blend_type)
+            end
+        end
+    -- Trick - If the function "is2HTrickWeapon()" returns "TRUE" and the variable "TRICK" equals "TRUE", then If you try to weaponchange, this will first untrick the weapon. Then weapon change
+    elseif is2HTrickWeapon() == TRUE then
+        -- If the weapon is two handed then proceed 
+        if style == HAND_RIGHT_BOTH then
+            -- If you press the change weapon key, untrick and then the variable "TWChangeWeapon" equals "TRUE"
+            if  env(1106, ACTION_ARM_CHANGE_WEAPON_R) or env(1106, ACTION_ARM_CHANGE_WEAPON_L) == TRUE then			
+                TWChangeWeapon = TRUE
+                ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+            end
+        -- If the weapon is one handed then proceed
+        elseif style == HAND_RIGHT then
+            -- If you press the change weapon key, then simply execute weapon change.
+            if  env(1106, ACTION_ARM_CHANGE_WEAPON_R) == TRUE then
+                ExecEventHalfBlend(Event_WeaponChangeStart, blend_type)
+            elseif  env(1106, ACTION_ARM_CHANGE_WEAPON_L) == TRUE then
+                ExecEventHalfBlend(Event_WeaponChangeStart, blend_type)
+            end
+        end
+    -- Trick - This is important.
+    else
     ExecEventHalfBlend(Event_WeaponChangeStart, blend_type)
+    end
     SetAIActionState()
     return TRUE
 end
 
 function ExecHandChange(hand, is_force, blend_type)
+    local sp_m = env("装備武器特殊カテゴリ番号取得", HAND_RIGHT) --- Local sp_m 
     if is_force == FALSE then
         if c_HasActionRequest == FALSE then
             return FALSE
@@ -2908,7 +3012,8 @@ function ExecHandChange(hand, is_force, blend_type)
             end
             pos = GetHandChangeType(HAND_LEFT)
             if pos == WEAPON_CHANGE_REQUEST_LEFT_WAIST then
-                if IsDualBladeSpecific(HAND_RIGHT) == TRUE then
+			local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_RIGHT)
+                if IsDualBladeSpecific(HAND_RIGHT) == TRUE and sp_kind ~= 158 then
                     local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_RIGHT)
                     local kind = env(225, HAND_LEFT)
                     if sp_kind == 144 and kind == WEAPON_CATEGORY_FIST then
@@ -2921,7 +3026,7 @@ function ExecHandChange(hand, is_force, blend_type)
                 end
             elseif pos == WEAPON_CHANGE_REQUEST_LEFT_BACK then
                 local kind = env(225, HAND_LEFT)
-                if IsDualBladeSpecific(HAND_RIGHT) == TRUE then
+                if IsDualBladeSpecific(HAND_RIGHT) == TRUE and sp_kind ~= 158 then
                     SetHandChangeStyle(LEFT_TO_BACK, LEFT_FROM_BACK)
                 elseif kind == WEAPON_CATEGORY_KATANA then
                     SetHandChangeStyle(LEFT_TO_WAIST, BOTH_FROM_ALL)
@@ -2929,18 +3034,18 @@ function ExecHandChange(hand, is_force, blend_type)
                     SetHandChangeStyle(LEFT_TO_BACK, BOTH_FROM_ALL)
                 end
             elseif pos == WEAPON_CHANGE_REQUEST_LEFT_SHOULDER then
-                if IsDualBladeSpecific(HAND_RIGHT) == TRUE then
+                if IsDualBladeSpecific(HAND_RIGHT) == TRUE and sp_kind ~= 158 then
                     SetHandChangeStyle(LEFT_TO_SHOULDER, LEFT_FROM_SHOULDER)
                 else
                     SetHandChangeStyle(LEFT_TO_SHOULDER, BOTH_FROM_ALL)
                 end
             elseif pos == WEAPON_CHANGE_REQUEST_LEFT_SPEAR then
-                if IsDualBladeSpecific(HAND_RIGHT) == TRUE then
+                if IsDualBladeSpecific(HAND_RIGHT) == TRUE and sp_kind ~= 158 then
                     SetHandChangeStyle(LEFT_TO_SPEAR, LEFT_FROM_SPEAR)
                 else
                     SetHandChangeStyle(LEFT_TO_SPEAR, BOTH_FROM_ALL)
                 end
-            elseif IsDualBladeSpecific(HAND_RIGHT) == TRUE then
+            elseif IsDualBladeSpecific(HAND_RIGHT) == TRUE and sp_kind ~= 158 then
                 SetHandChangeStyle(LEFT_TO_SPEAR, LEFT_FROM_SPEAR)
             else
                 SetHandChangeStyle(LEFT_TO_SPEAR, BOTH_FROM_ALL)
@@ -2952,7 +3057,8 @@ function ExecHandChange(hand, is_force, blend_type)
             end
             pos = GetHandChangeType(HAND_RIGHT)
             if pos == WEAPON_CHANGE_REQUEST_RIGHT_WAIST then
-                if IsDualBladeSpecific(HAND_LEFT) == TRUE then
+			local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
+                if IsDualBladeSpecific(HAND_LEFT) == TRUE and sp_kind ~= 158 then
                     local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
                     local kind = env(225, HAND_RIGHT)
                     if sp_kind == 144 and kind == WEAPON_CATEGORY_FIST then
@@ -2965,7 +3071,7 @@ function ExecHandChange(hand, is_force, blend_type)
                 end
             elseif pos == WEAPON_CHANGE_REQUEST_RIGHT_BACK then
                 local kind = env(225, HAND_RIGHT)
-                if IsDualBladeSpecific(HAND_LEFT) == TRUE then
+                if IsDualBladeSpecific(HAND_LEFT) == TRUE and sp_kind ~= 158 then
                     if kind == WEAPON_CATEGORY_KATANA then
                         SetHandChangeStyle(RIGHT_TO_WAIST, BOTHLEFT_FROM_ALL)
                     else
@@ -2977,18 +3083,18 @@ function ExecHandChange(hand, is_force, blend_type)
                     SetHandChangeStyle(RIGHT_TO_BACK, BOTHLEFT_FROM_ALL)
                 end
             elseif pos == WEAPON_CHANGE_REQUEST_RIGHT_SHOULDER then
-                if IsDualBladeSpecific(HAND_LEFT) == TRUE then
+                if IsDualBladeSpecific(HAND_LEFT) == TRUE and sp_kind ~= 158 then
                     SetHandChangeStyle(RIGHT_TO_SHOULDER, RIGHT_FROM_SHOULDER)
                 else
                     SetHandChangeStyle(RIGHT_TO_SHOULDER, BOTHLEFT_FROM_ALL)
                 end
             elseif pos == WEAPON_CHANGE_REQUEST_RIGHT_SPEAR then
-                if IsDualBladeSpecific(HAND_LEFT) == TRUE then
+                if IsDualBladeSpecific(HAND_LEFT) == TRUE and sp_kind ~= 158 then
                     SetHandChangeStyle(RIGHT_TO_SPEAR, RIGHT_FROM_SPEAR)
                 else
                     SetHandChangeStyle(RIGHT_TO_SPEAR, BOTHLEFT_FROM_ALL)
                 end
-            elseif IsDualBladeSpecific(HAND_LEFT) == TRUE then
+            elseif IsDualBladeSpecific(HAND_LEFT) == TRUE and sp_kind ~= 158 then
                 SetHandChangeStyle(RIGHT_TO_BACK, RIGHT_FROM_BACK)
             else
                 SetHandChangeStyle(RIGHT_TO_BACK, BOTHLEFT_FROM_ALL)
@@ -3035,9 +3141,170 @@ function ExecHandChange(hand, is_force, blend_type)
     if blend_type == ALLBODY and MoveStart(LOWER, Event_MoveLong, FALSE) == TRUE then
         blend_type = UPPER
     end
-    ExecEventHalfBlend(Event_HandChangeStart, blend_type)
-    SetAIActionState()
-    return TRUE
+-- Trick - Untricking/Tricking code 1H TO 1H
+if  isTrickWeapon() == TRUE then  -- you identify is the weapon a 1H Trick weapon here
+    if style == HAND_RIGHT then -- one handed
+        if env(1001) <= 0 then -- Stamina
+            return FALSE 
+        -- When the variable "Trick" equals "TRUE" - Then proceed with untricking codes.
+        elseif Trick == TRUE then
+            -- if Speffect 100971 is found, then the variable UntrickAttack = TRUE. Make sure you give yourself the speffect in TAE matching with (End if weapon switch) 
+            if env(1116, 100971) == TRUE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+                UntrickAttack = TRUE
+                ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+            elseif env(1116, 100973) == TRUE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+                UntrickAttack = TRUE
+                ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+            -- This is the main 1H untricking code.
+            elseif env(1106, ACTION_ARM_CHANGE_STYLE_LEFT) == FALSE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+                ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+            -- If you try to 2H left hand weapon then T2HLHW = TRUE which is required for untricking then switching left hand weapon.
+            elseif env(1106, ACTION_ARM_CHANGE_STYLE_LEFT) == TRUE then
+                T2HLHW = TRUE
+                ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+            end
+        -- When the variable "Trick" doesn't equal "TRUE" - Then proceed with tricking codes.
+        else 
+            -- if Speffect 100971 is found, then the variable "TrickAttack" equals "TRUE". Make sure you give yourself the speffect in TAE matching with (End if weapon switch)
+            if env(1116, 100971) == TRUE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+                TrickAttack = TRUE
+                ExecEventHalfBlend(Event_AttackCrossbowRightEmpty, blend_type)
+            elseif env(1116, 100973) == TRUE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+                TrickAttack = TRUE
+                ExecEventHalfBlend(Event_AttackCrossbowRightEmpty, blend_type)
+            -- This is the main 1H tricking code.
+            elseif env(1106, ACTION_ARM_CHANGE_STYLE_LEFT) == FALSE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+                ExecEventHalfBlend(Event_AttackCrossbowRightEmpty, blend_type)
+            -- If you try to 2H left hand weapon then - 2H left hand weapon
+            elseif env(1106, ACTION_ARM_CHANGE_STYLE_LEFT) == TRUE then
+                ExecEventHalfBlend(Event_HandChangeStart, blend_type)
+           end
+        end
+    end
+-- Trick - Untricking/Tricking code 1H TO 2H
+elseif is2HTrickWeapon() == TRUE then -- your list of weapons TAE
+    -- When style equals "HAND_RIGHT" - Then proceed with tricking codes.
+    if style == HAND_RIGHT then -- one handed
+        if env(1001) <= 0 then -- Stamina
+            return FALSE
+        -- if Speffect 100971 is found, then the variable "TrickAttack" equals "TRUE". Make sure you give yourself the speffect in TAE matching with (End if weapon switch) 
+        elseif env(1116, 100971) == TRUE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+            TrickAttack = TRUE
+            ExecEventHalfBlend(Event_AttackCrossbowRightEmpty, blend_type)
+        elseif env(1116, 100973) == TRUE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+            TrickAttack = TRUE
+            ExecEventHalfBlend(Event_AttackCrossbowRightEmpty, blend_type)
+        -- This is the main 1H to 2H tricking code.
+        elseif env(1106, ACTION_ARM_CHANGE_STYLE_LEFT) == FALSE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+            ExecEventHalfBlend(Event_AttackCrossbowRightEmpty, blend_type)
+        -- If you try to 2H left hand weapon then - 2H left hand weapon
+        elseif env(1106, ACTION_ARM_CHANGE_STYLE_LEFT) == TRUE then
+            ExecEventHalfBlend(Event_HandChangeStart, blend_type) 
+            return FALSE 
+        end
+    -- When style equals "HAND_RIGHT_BOTH or HAND_BOTH" - Then proceed with tricking codes.
+    elseif style == HAND_RIGHT_BOTH or style == HAND_BOTH then
+        if env(1001) <= 0 then -- Stamina
+            return FALSE
+        -- if Speffect 100971 is found, then the variable "UntrickAttack" equals "TRUE". Make sure you give yourself the speffect in TAE matching with (End if weapon switch)
+        elseif env(1116, 100971) == TRUE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+            UntrickAttack = TRUE
+            ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+        elseif env(1116, 100973) == TRUE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+            UntrickAttack = TRUE
+            ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+        -- This is the main 2H to 1H untricking code. 
+        elseif env(1106, ACTION_ARM_CHANGE_STYLE_LEFT) == FALSE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+            ExecEventHalfBlend(Event_AttackCrossbowRightReload, blend_type)
+            if style == HAND_BOTH then ExecEventHalfBlend(Event_HandChangeStart, blend_type) end
+        else
+            return FALSE
+        end
+    -- If you're 2 handing a left hand weapon, while holding a 2h trick weapon in your right hand. This will allow you to stop 2 handing it.
+    elseif style == HAND_LEFT_BOTH then -- This is how you change back to 1H
+        if env(1001) <= 0 then -- Stamina
+            return FALSE 
+        elseif env(1106, ACTION_ARM_CHANGE_STYLE_LEFT) == FALSE and env(1106, ACTION_ARM_CHANGE_STYLE) == TRUE then
+            ExecEventHalfBlend(Event_HandChangeStart, blend_type) 
+        else
+            return FALSE
+        end
+    end
+-- Trick - This is important.
+else 
+    ExecEventHalfBlend(Event_HandChangeStart, blend_type)  --- replace Original event if sp_m is matched
+end
+SetAIActionState()
+return TRUE
+end
+
+function isTrickWeapon()
+-- Trick - Is this a trick weapon? 
+    local style = c_Style
+    local hand = HAND_RIGHT
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+    if sp_kind == 268 or sp_kind == 147 then
+        return TRUE 
+    else
+        return FALSE
+    end
+end
+
+function is2HTrickWeapon()
+-- Trick - Is this a 2 Handed trick weapon? 
+    local style = c_Style
+    local hand = HAND_RIGHT
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+    if sp_kind == 601 or sp_kind == 147 then
+        return TRUE
+    else
+        return FALSE
+    end
+end
+
+function isExtended1HR1()
+    -- Trick - Is more than 3 1H R1
+    SawCleaver = "SawCleaver"
+    local style = c_Style
+    local hand = HAND_RIGHT
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+    if sp_kind == 267 then
+        return 1
+    elseif sp_kind == 268 then
+        return SawCleaver
+    else
+        return nil
+    end
+end
+
+function isOffHandCombo()
+    -- Offhand Combo - Is this Off Hand Weapon allowed to combo with Right Hand Weapon?
+    DWRapier = "DWRapier"
+    local is_L_Rapier = GetEquipType(HAND_LEFT, 27)
+    local is_R_Rapier = GetEquipType(HAND_RIGHT, 27)
+    local Rsp_kind = env("装備武器特殊カテゴリ番号取得", HAND_RIGHT)
+    local Lsp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
+    if Lsp_kind == 50 or Lsp_kind == 232 then
+        return FALSE
+    elseif Rsp_kind == 50 or Rsp_kind == 232 or Rsp_kind == 268 or Rsp_kind == 161 then
+        return FALSE
+    -- DW - Dual Rapier Combo - Rapiers - Special 
+    elseif is_L_Rapier == TRUE and is_R_Rapier == TRUE then
+        if Lsp_kind ~= 237 and Rsp_kind ~= 237 then
+            return DWRapier
+        end
+    else
+        return TRUE
+    end
 end
 
 function ExecEvasion(backstep_limit, estep, is_usechainrecover)
@@ -5850,6 +6117,10 @@ function DashStop_Upper_onActivate()
 end
 
 function DashStop_Upper_onUpdate()
+    -- Force to Idle - DashStop
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if StopCommonFunction(TRUE) == TRUE then
         return 
     else
@@ -5863,6 +6134,10 @@ function RunStopFront_Upper_onActivate()
 end
 
 function RunStopFront_Upper_onUpdate()
+    -- Force to Idle - DashStopFront
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if StopCommonFunction(FALSE) == TRUE then
         return 
     else
@@ -5876,6 +6151,10 @@ function RunStopBack_Upper_onActivate()
 end
 
 function RunStopBack_Upper_onUpdate()
+    -- Force to Idle - DashStopBack
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if StopCommonFunction(FALSE) == TRUE then
         return 
     else
@@ -5889,6 +6168,10 @@ function RunStopLeft_Upper_onActivate()
 end
 
 function RunStopLeft_Upper_onUpdate()
+    -- Force to Idle - DashStopLeft
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if StopCommonFunction(FALSE) == TRUE then
         return 
     else
@@ -5902,6 +6185,10 @@ function RunStopRight_Upper_onActivate()
 end
 
 function RunStopRight_Upper_onUpdate()
+    -- Force to Idle - DashStopRight
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if StopCommonFunction(FALSE) == TRUE then
         return 
     else
@@ -5990,7 +6277,11 @@ function Rolling_onUpdate()
     if env(1116, 100390) == TRUE then
         ResetDamageCount()
     end
+    local hand = HAND_RIGHT
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
     local style = c_Style
+    local r2 = "W_AttackRightHeavy2Start"
+    local b2 = "W_AttackBothHeavy2Start"
     if style == HAND_LEFT_BOTH then
         if GetEquipType(HAND_LEFT, WEAPON_CATEGORY_SMALL_ARROW, WEAPON_CATEGORY_LARGE_ARROW, WEAPON_CATEGORY_CROSSBOW) == TRUE then
             act("精密射撃可能か")
@@ -5998,11 +6289,19 @@ function Rolling_onUpdate()
     elseif style == HAND_RIGHT_BOTH and GetEquipType(HAND_RIGHT, WEAPON_CATEGORY_SMALL_ARROW, WEAPON_CATEGORY_LARGE_ARROW, WEAPON_CATEGORY_CROSSBOW) == TRUE then
         act("精密射撃可能か")
     end
+    -- Trick - Roll heavy To First heavy
+    if isExtended1HR1() == SawCleaver then
+        r2 = "W_AttackRightHeavy1SubStart"
+        b2 = "W_AttackBothHeavy1SubStart"
+    elseif sp_kind == 161 then
+        b2 = "W_AttackBothHeavy1Start"
+        r2 = "W_AttackRightHeavy1Start"
+    end    
     local rolling_angle = GetVariable("RollingAngleReal")
     local addratio = 0.400000005960464
     local endratio = 1
     act(2001, math.abs(1 + addratio * math.abs(math.sin(math.rad(2 * rolling_angle)))))
-    if EvasionCommonFunction(FALL_TYPE_DEFAULT, "W_AttackRightLightStep", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLightStep", "W_AttackBothHeavy2Start") == TRUE then
+    if EvasionCommonFunction(FALL_TYPE_DEFAULT, "W_AttackRightLightStep", r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLightStep", b2) == TRUE then
         return 
     elseif env("アニメ終了か", 1) == TRUE then
         ExecEventAllBody("W_Idle")
@@ -6021,6 +6320,11 @@ end
 function RollingSelftrans_onUpdate()
     SetThrowAtkInvalid()
     local style = c_Style
+    local hand = HAND_RIGHT
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    local style = c_Style
+    local r2 = "W_AttackRightHeavy2Start"
+    local b2 = "W_AttackBothHeavy2Start"
     if style == HAND_LEFT_BOTH then
         if GetEquipType(HAND_LEFT, WEAPON_CATEGORY_SMALL_ARROW, WEAPON_CATEGORY_LARGE_ARROW, WEAPON_CATEGORY_CROSSBOW) == TRUE then
             act("精密射撃可能か")
@@ -6032,7 +6336,15 @@ function RollingSelftrans_onUpdate()
     local addratio = 0.400000005960464
     local endratio = 1
     act(2001, math.abs(1 + addratio * math.abs(math.sin(math.rad(2 * rolling_angle)))))
-    if EvasionCommonFunction(FALL_TYPE_DEFAULT, "W_AttackRightLightStep", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLightStep", "W_AttackBothHeavy2Start") == TRUE then
+    -- Trick - Roll heavy To First heavy
+    if isExtended1HR1() == SawCleaver then
+        r2 = "W_AttackRightHeavy1SubStart"
+        b2 = "W_AttackBothHeavy1SubStart"
+    elseif sp_kind == 161 then
+        b2 = "W_AttackBothHeavy1Start"
+        r2 = "W_AttackRightHeavy1Start"
+    end    
+    if EvasionCommonFunction(FALL_TYPE_DEFAULT, "W_AttackRightLightStep", r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLightStep", b2) == TRUE then
         return 
     elseif env("アニメ終了か", 1) == TRUE then
         ExecEventAllBody("W_Idle")
@@ -6754,24 +7066,82 @@ function AttackRight_Activate()
     return 
 end
 
-function AttackRightLight1_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight2", "W_AttackRightHeavy1SubStart", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight2", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackRightLight1_onUpdate() -- >30000
+    -- Force to Idle - First 1H R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local r2 = "W_AttackRightHeavy1SubStart"
+    local b2 = "W_AttackBothHeavy1Start"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    -- Offhand Combo - First R1 into First L2 - Default "W_AttackLeftHeavy1" DWRapierSpecial
+    local l2 = "W_AttackLeftHeavy1"
+    if isOffHandCombo() == DWRapier then
+        l2 = "W_AttackBothLeft2"
+    elseif isOffHandCombo() == TRUE then
+        l2 = "W_AttackLeftHeavy3"
+    elseif sp_kind == 161 then
+        r2 = "W_AttackRightHeavy2Start"
+        b2 = "W_AttackBothHeavy2Start"
+    end  
+    if AttackCommonFunction("W_AttackRightLight2", r2, l2, l2, "W_AttackBothLight2", b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackRightLight2_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight3", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight3", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackRightLight2_onUpdate() -- >30010
+    -- Force to Idle - Second 1H R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    -- Offhand Combo - Second R1 into Second L2 - Default "W_AttackLeftHeavy1"
+    local l2 = "W_AttackLeftHeavy1"
+    if isOffHandCombo() == DWRapier then
+        l2 = "W_AttackBothLeft3"
+    elseif isOffHandCombo() == TRUE then
+        l2 = "W_AttackLeftHeavy2"
+    end
+    if AttackCommonFunction("W_AttackRightLight3", "W_AttackRightHeavy1Start", l2, l2, "W_AttackBothLight3", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackRightLight3_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight2", "W_AttackRightHeavy1SubStart", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight2", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackRightLight3_onUpdate() -- >30020
+    -- Force to Idle - Third 1H R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    -- trick - Third R1 to Fourth R1
+    local r1 = "W_AttackRightLight2"
+    local r2 = "W_AttackRightHeavy1SubStart"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    if isExtended1HR1() == SawCleaver then
+        r1 = "W_AttackRightHeavyWepBroken1Start"
+    elseif sp_kind == 161 then
+        r2 = "W_AttackRightHeavy2Start"
+    end
+    -- Offhand Combo - Third R1 into Third L2 - Default "W_AttackLeftHeavy1"
+    local l2 = "W_AttackLeftHeavy1"
+    if isOffHandCombo() == DWRapier then
+        l2 = "W_AttackBothLeft1"
+    elseif isOffHandCombo() == TRUE then
+        l2 = "W_AttackLeftHeavy3"
+    end 
+    if AttackCommonFunction(r1, r2, l2, l2, "W_AttackBothLight2", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -6786,7 +7156,11 @@ function AttackRightLightKick_onUpdate()
     end
 end
 
-function AttackRightLightStep_onUpdate()
+function AttackRightLightStep_onUpdate() -- >30900
+    -- Force to Idle - Rolling 1H R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
@@ -6794,7 +7168,35 @@ function AttackRightLightStep_onUpdate()
     end
 end
 
-function AttackRightLightStepSpecial_onUpdate()
+function AttackRightLightStepSpecial_onUpdate() -- >30910
+    -- Force to Idle - 1H LightStepSpecial
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local r1 = "W_AttackRightLight1"
+    local r2 = "W_AttackRightHeavy1Start"
+    local l2 = "W_AttackLeftHeavy1"
+    -- Trick - REAL - Fifth R1 to Second R1
+    if isExtended1HR1() == SawCleaver then
+        r1 = "W_AttackRightLight2"
+        r2 = "W_AttackRightHeavy1SubStart" 
+    end
+    if AttackCommonFunction(r1, r2, "W_AttackLeftLight1", l2, "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+        return 
+    else
+        return 
+    end
+end
+
+function AttackRightLightDash_onUpdate() -- >30500
+    -- Force to Idle - 1H Running R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    -- Force to Idle - Running 1H R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
@@ -6802,16 +7204,17 @@ function AttackRightLightStepSpecial_onUpdate()
     end
 end
 
-function AttackRightLightDash_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
-        return 
-    else
-        return 
+function AttackRightLightDashSpecial_onUpdate() -- >30510
+    -- Force to Idle - Tricking Attack - Left to Right
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
     end
-end
-
-function AttackRightLightDashSpecial_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+    -- Trick - Tricking attack - Right to Left - Transition to Tricked Left R1
+    local b1 = "W_AttackBothLight1"
+    if isExtended1HR1() == SawCleaver then
+        b1 = "W_AttackBothHeavyWepBroken2Start"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", b1, "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -6826,9 +7229,20 @@ function AttackRightWhileGuard_onUpdate()
     end
 end
 
-function AttackRightHeavy1SubStart_onUpdate()
+function AttackRightHeavy1SubStart_onUpdate() -- >30330
+    -- Force to Idle - 1H Heavy1SubStart
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
-        return 
+        return
+    -- Trick - 4 Stage heavy attack - Transition 
+    elseif env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
+        ExecEventAllBody("W_AttackRightHeavy1End")
+        return
+    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
+        ExecEventAllBody("W_AttackRightHeavySpecial1Start")
+        return
     elseif env(301, 0) == TRUE or env("アニメ終了か", 1) == TRUE then
         act("特殊補間設定", 0, TRUE)
         ExecEventAllBody("W_AttackRightHeavy1Start")
@@ -6838,10 +7252,31 @@ function AttackRightHeavy1SubStart_onUpdate()
     end
 end
 
-function AttackRightHeavy1Start_onUpdate()
+function AttackRightHeavy1Start_onUpdate() -- >30320
+    -- Force to Idle - 1H Heavy1Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     act("特殊補間設定", 0, FALSE)
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
-        return 
+    local r1 = "W_AttackRightLight1"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    if sp_kind == 161 then
+        r1 = "W_AttackRightLight2"
+    end
+    if AttackCommonFunction(r1, "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+        return
+    -- Trick - 4 Stage heavy attack 
+    elseif env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
+        ExecEventAllBody("W_AttackRightHeavy1End")
+        return
+    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
+        ExecEventAllBody("W_AttackRightHeavySpecial1Start")
+        return
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackRightHeavy1End")
         return 
@@ -6850,16 +7285,32 @@ function AttackRightHeavy1Start_onUpdate()
     end
 end
 
-function AttackRightHeavy1End_onUpdate()
+function AttackRightHeavy1End_onUpdate() -- >30321
+    -- Force to Idle - 1H Heavy1End
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
-        return 
+        return
+    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
+        ExecEventAllBody("W_AttackRightHeavySpecial1End")
+        return
     else
         return 
     end
 end
 
-function AttackRightHeavy2Start_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackRightHeavy2Start_onUpdate() -- >30340
+    local hand = HAND_RIGHT
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+    local r1 = "W_AttackRightLight1"
+    local r2 = "W_AttackRightHeavy1Start"
+    -- Farron Greatsword - AttackRightHeavy2Start Combo Edits
+    if sp_kind == 161 then
+        r1 = "W_AttackRightLight2"
+        r2 = nil
+    end
+    if AttackCommonFunction(r1, r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackRightHeavy2End")
@@ -6880,29 +7331,60 @@ end
 function AttackRightHeavySpecial1SubStart_onUpdate()
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
         return 
-    elseif env(301, 0) == TRUE or env("アニメ終了か", 1) == TRUE then
-        act("特殊補間設定", 0, TRUE)
-        ExecEventAllBody("W_AttackRightHeavySpecial1Start")
-        return 
     else
         return 
     end
 end
 
-function AttackRightHeavySpecial1Start_onUpdate()
+function AttackRightHeavySpecial1Start_onUpdate() -- >30350
+    -- Force to Idle - 1H HeavySpecial1Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     act("特殊補間設定", 0, FALSE)
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
-        return 
-    elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
-        ExecEventAllBody("W_AttackRightHeavySpecial1End")
-        return 
+    local b2 = "W_AttackBothHeavy2Start"
+    local b1 = "W_AttackBothLight1"
+    local r2 = "W_AttackRightHeavy2Start"
+    local r1 = "W_AttackRightLight1"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    -- Trick - 4 Stage heavy attack 
+    if isExtended1HR1() == SawCleaver then
+        r2 = "W_AttackRightHeavy1SubStart"
+        r1 = "W_AttackRightLight2"
+    elseif sp_kind == 161 then
+        b2 = "W_AttackBothHeavy1Start"
+    end
+    if AttackCommonFunction(r1, r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE) == TRUE then
+        return
+    end
+    if sp_kind ~= 161 then
+        if env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
+            ExecEventAllBody("W_AttackRightHeavySpecial1End")
+            return
+        end 
     else
         return 
     end
 end
 
-function AttackRightHeavySpecial1End_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+function AttackRightHeavySpecial1End_onUpdate() -- >30351
+    -- Force to Idle - 1H HeavySpecial1End
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local r2 = "W_AttackRightHeavy2Start"
+    local r1 = "W_AttackRightLight1"
+    -- Trick - 4 Stage heavy attack 
+    if isExtended1HR1() == SawCleaver then
+        r2 = "W_AttackRightHeavy1SubStart"
+        r1 = "W_AttackRightLight2"
+    end
+    if AttackCommonFunction(r1, r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -6920,22 +7402,75 @@ function AttackRightHeavySpecial2Start_onUpdate()
     end
 end
 
-function AttackRightHeavySpecial2End_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackRightHeavySpecial2End_onUpdate() -- >30371
+-- Farron Greatsword - Farron Ring L1 to Second L1
+    local l1 = "W_AttackBothLeft1"
+    local b1 = "W_AttackBothLight1"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    if sp_kind == 161 then 
+        l1 = "W_AttackBothLeft2"
+        b1 = "W_AttackBothLight3"
+    end
+    if sp_kind == 161 then
+        if env(1108, ACTION_ARM_L1) >= 100 and env(1116, 100976) == TRUE then
+            ExecEventAllBody("W_AttackRightHeavySpecial1Start")
+            return
+        end
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", l1, "W_AttackLeftHeavy1", b1, "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackRightHeavyWepBroken1Start_onUpdate()
-    AttackRightHeavy1Start_onUpdate()
-    return 
+function AttackRightHeavyWepBroken1Start_onUpdate() -- >30325
+    -- Force to Idle - 1H WepBrokenHeavy1Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    act("特殊補間設定", 0, FALSE)
+    local r1 = "W_AttackRightLight1"
+    local r2 = "W_AttackRightHeavy2Start"
+    local l2 = "W_AttackLeftHeavy1"
+    -- Trick - Fourth R1 to Fifth R1
+    if isExtended1HR1() == SawCleaver then
+        r1 = "W_AttackRightLightStepSpecial"
+        r2 = "W_AttackRightHeavy1SubStart"
+    end
+    if AttackCommonFunction(r1, r2, "W_AttackLeftLight1", l2, "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+        return 
+    elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
+        ExecEventAllBody("W_AttackRightHeavy1End")
+        return 
+    else
+        return 
+    end
 end
 
-function AttackRightHeavyWepBroken2Start_onUpdate()
-    AttackRightHeavy2Start_onUpdate()
-    return 
+function AttackRightHeavyWepBroken2Start_onUpdate() -- >30345
+    -- Force to Idle - 1H WepBrokenHeavy2Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local r1 = "W_AttackRightLight1"
+    -- Trick - Fifth R1 to Second R1
+    if isExtended1HR1() == SawCleaver then
+        r1 = "W_AttackRightLight2"
+    end
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+        return 
+    elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
+        ExecEventAllBody("W_AttackRightHeavy2End")
+        return 
+    else
+        return 
+    end
 end
 
 function AttackRightHeavyWepBroken1SubStart_onUpdate()
@@ -6950,23 +7485,50 @@ function AttackRightHeavyWepBroken1SubStart_onUpdate()
     end
 end
 
-function AttackRightHeavyKick_onUpdate()
-    if AttackCommonFunction("W_AttackRightLightStep", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackRightHeavyKick_onUpdate() -- >30600
+    -- Force to Idle - 1H Running R2
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    -- Force to Idle - Running 1H R2
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local r2 = "W_AttackRightHeavy2Start"
+    local r1 = "W_AttackRightLightStep"
+    -- Trick - Untricked - Running Heavy Attack to Transition to Heavy
+    if isExtended1HR1() == SawCleaver then
+        r2 = "W_AttackRightHeavy1SubStart"
+        r1 = "W_AttackRightLight2"
+    end
+    if AttackCommonFunction(r1, r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackRightHeavyKickSpecial_onUpdate()
-    if AttackCommonFunction("W_AttackRightLightStep", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackRightHeavyKickSpecial_onUpdate() -- >30610
+    -- Force to Idle - Tricking Attack - Right to Left
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end  
+    local b1 = "W_AttackBothLight1"
+    if isExtended1HR1() == SawCleaver then
+        b1 = "W_AttackBothLight2"
+    end
+    if AttackCommonFunction("W_AttackRightLightStep", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", b1, "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackRightBackstep_onUpdate()
+function AttackRightBackstep_onUpdate() -- >30920
+    -- Force to Idle - 1H AttackRightBackstep
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
@@ -7000,24 +7562,45 @@ function AttackLeftLight1_onUpdate()
     end
 end
 
-function AttackLeftHeavy1_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy2", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackLeftHeavy1_onUpdate() -- >32000
+    -- Offhand Combo - First L2 into First R1 - Default "W_AttackRightLight1" 
+    local r1 = "W_AttackRightLight1"
+    if isOffHandCombo() == FALSE then
+        r1 = "W_AttackRightLight1"
+    elseif isOffHandCombo() == TRUE then
+        r1 = "W_AttackRightLight3"
+    end 
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy2", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackLeftHeavy2_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy3", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackLeftHeavy2_onUpdate() -- >32030
+    -- Offhand Combo - Second L2 into Second R1 - Default "W_AttackRightLight1"
+    local r1 = "W_AttackRightLight1"
+    if isOffHandCombo() == FALSE then
+        r1 = "W_AttackRightLight1"
+    elseif isOffHandCombo() == TRUE then
+        r1 = "W_AttackRightLight2"
+    end 
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy3", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackLeftHeavy3_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy2", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackLeftHeavy3_onUpdate() -- >32060
+    -- Offhand Combo - Third L2 into Third R1 - Default "W_AttackRightLight1"
+    local r1 = "W_AttackRightLight1"
+    if isOffHandCombo() == FALSE then
+        r1 = "W_AttackRightLight1"
+    elseif isOffHandCombo() == TRUE then
+        r1 = "W_AttackRightLight3"
+    end 
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy2", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7025,18 +7608,48 @@ function AttackLeftHeavy3_onUpdate()
 end
 
 function AttackLeftHeavySp1_onUpdate()
-    AttackLeftHeavy1_onUpdate()
-    return 
+    -- Offhand Combo - First Special L2 into First R1 - Default "W_AttackRightLight1"
+    local r1 = "W_AttackRightLight1"
+    if isOffHandCombo() == FALSE then
+        r1 = "W_AttackRightLight1"
+    elseif isOffHandCombo() == TRUE then
+        r1 = "W_AttackRightLight3"
+    end 
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy2", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+        return 
+    else
+        return 
+    end
 end
 
 function AttackLeftHeavySp2_onUpdate()
-    AttackLeftHeavy2_onUpdate()
-    return 
+    -- Offhand Combo - Second Special L2 into Second R1 - Default "W_AttackRightLight1"
+    local r1 = "W_AttackRightLight1"
+    if isOffHandCombo() == FALSE then
+        r1 = "W_AttackRightLight1"
+    elseif isOffHandCombo() == TRUE then
+        r1 = "W_AttackRightLight2"
+    end 
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy3", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+        return 
+    else
+        return 
+    end
 end
 
 function AttackLeftHeavySp3_onUpdate()
-    AttackLeftHeavy3_onUpdate()
-    return 
+    -- Offhand Combo - Third Special L2 into Third R1 - Default "W_AttackRightLight1"
+    local r1 = "W_AttackRightLight1"
+    if isOffHandCombo() == FALSE then
+        r1 = "W_AttackRightLight1"
+    elseif isOffHandCombo() == TRUE then
+        r1 = "W_AttackRightLight3"
+    end 
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", nil, "W_AttackLeftHeavy2", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+        return 
+    else
+        return 
+    end
 end
 
 function AttackBoth_Activate()
@@ -7050,7 +7663,11 @@ function AttackBoth_Activate()
     return 
 end
 
-function AttackBothLight1_onUpdate()
+function AttackBothLight1_onUpdate() -- >34000
+    -- Force to Idle - 2H First R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     local b2 = "W_AttackBothHeavy1SubStart"
     local hand = HAND_RIGHT
     local style = c_Style
@@ -7067,7 +7684,11 @@ function AttackBothLight1_onUpdate()
     end
 end
 
-function AttackBothLight2_onUpdate()
+function AttackBothLight2_onUpdate() -- >34010
+    -- Force to Idle - 2H Second R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if AttackCommonFunction("W_AttackRightLight3", "W_AttackRightHeavy1Start", "W_AttackBothLeft3", "W_AttackLeftHeavy1", "W_AttackBothLight3", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
@@ -7075,15 +7696,24 @@ function AttackBothLight2_onUpdate()
     end
 end
 
-function AttackBothLight3_onUpdate()
+function AttackBothLight3_onUpdate() -- >34020
+    -- Force to Idle - 2H Third R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     local b1 = "W_AttackBothLight2"
     local hand = HAND_RIGHT
     local style = c_Style
     if style == HAND_LEFT_BOTH then
         hand = HAND_LEFT
     end
-    if env("装備武器特殊カテゴリ番号取得", hand) == 232 then
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+    -- Trick - Saw Cleaver - Tricked - Third R1 to First R1
+    if sp_kind == 232 then
         b1 = "W_AttackBothLight1"
+    -- Farron Greatsword - Third 2H R1 transition into
+    elseif sp_kind == 161 then
+        b1 = "W_AttackBothBackstep"
     end
     if env(1116, 100440) == TRUE then
         act(2001, 0.699999988079071)
@@ -7096,7 +7726,31 @@ function AttackBothLight3_onUpdate()
 end
 
 function AttackBothLeft1_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight2", "W_AttackRightHeavy1Start", "W_AttackBothLeft2", "W_AttackLeftHeavy1", "W_AttackBothLight2", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+    local r1 = "W_AttackRightLight2"
+    local b1 = "W_AttackBothLight2"
+    local l1 = "W_AttackBothLeft2"
+    local b2 = "W_AttackBothHeavy1Start"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    -- Farron Greatsword - L1 to Farron Ring L1
+    if sp_kind == 161 then
+        b1 = "W_AttackBothLight3"
+        if IsWarcrySpAtk() == TRUE then 
+            ExecEventAllBody("W_AttackRightHeavySpecial2End")
+            return
+        elseif env(1108, ACTION_ARM_L1) >= 50 and env(1116, 100976) == TRUE then
+            ExecEventAllBody("W_AttackRightBackstep")
+            return
+        end
+    -- DW - Rapiers
+    elseif isOffHandCombo() == DWRapier then
+        r1 = "W_AttackRightLight2"
+    end
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", l1, "W_AttackLeftHeavy2", b1, b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7104,7 +7758,25 @@ function AttackBothLeft1_onUpdate()
 end
 
 function AttackBothLeft2_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft3", "W_AttackLeftHeavy1", "W_AttackBothLight3", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+-- Farron Greatsword - Second L2 to R1
+    local r1 = "W_AttackRightLight1"
+    local b1 = "W_AttackBothLight3"
+    local l1 = "W_AttackBothLeft3"
+    local b2 = "W_AttackBothHeavy1Start"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    if sp_kind == 161 then 
+        b1 = "W_AttackBothLight1"
+    end
+    -- DW - Rapiers
+    if isOffHandCombo() == DWRapier then
+        r1 = "W_AttackRightLight3"
+    end
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", l1, "W_AttackLeftHeavy3", b1, b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7112,7 +7784,12 @@ function AttackBothLeft2_onUpdate()
 end
 
 function AttackBothLeft3_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight2", "W_AttackRightHeavy1Start", "W_AttackBothLeft2", "W_AttackLeftHeavy1", "W_AttackBothLight2", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+    local r1 = "W_AttackRightLight2"
+    -- DW - Rapiers
+    if isOffHandCombo() == DWRapier then
+        r1 = "W_AttackRightLight1"
+    end
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", "W_AttackBothLeft2", "W_AttackLeftHeavy1", "W_AttackBothLight2", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7148,8 +7825,19 @@ function AttackBothLeftStep_onUpdate()
     end
 end
 
-function AttackBothHeavy1SubStart_onUpdate()
+function AttackBothHeavy1SubStart_onUpdate() -- >34330
+    -- Force to Idle - 2H Heavy1SubStart
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+        return
+    -- Trick - Tricked - 4 Stage heavy attack - Transition 
+    elseif env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavy1End")
+        return
+    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavySpecial1Start")
         return 
     elseif env(301, 0) == TRUE or env("アニメ終了か", 1) == TRUE then
         act("特殊補間設定", 0, TRUE)
@@ -7160,9 +7848,38 @@ function AttackBothHeavy1SubStart_onUpdate()
     end
 end
 
-function AttackBothHeavy1Start_onUpdate()
+function AttackBothHeavy1Start_onUpdate() -- >34320
+    -- Force to Idle - 2H Heavy1Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     act("特殊補間設定", 0, FALSE)
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+    local b1 = "W_AttackBothLight1"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    if sp_kind == 161 then 
+        b1 = "W_AttackBothLight2"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+        return
+    -- Trick - Tricked - 4 Stage heavy attack
+    elseif sp_kind == 161 then
+        if env(1108, ACTION_ARM_R2) <= 100 and env(1116, 100976) == TRUE then
+            ExecEventAllBody("W_AttackBothHeavy1End")
+            return
+        elseif env(1108, ACTION_ARM_R2) <= 100 and env(1116, 100977) == TRUE then
+            ExecEventAllBody("W_AttackRightLight1")
+            return
+        end
+    elseif isExtended1HR1() == SawCleaver and env(1108, ACTION_ARM_R2) >= 100 and env(1116, 100975) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavy1End")
+        return
+    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavySpecial1Start")
         return 
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackBothHeavy1End")
@@ -7172,48 +7889,121 @@ function AttackBothHeavy1Start_onUpdate()
     end
 end
 
-function AttackBothHeavy1End_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+function AttackBothHeavy1End_onUpdate() -- >34321
+     -- Force to Idle - 2H Heavy1End
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local b2 = "W_AttackBothHeavy2Start"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    if sp_kind == 161 then 
+        b2 = "W_AttackBothHeavy1Start"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", b2, FALSE, TRUE) == TRUE then
+        return
+     -- Trick - Tricked - 4 Stage heavy attack
+    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavySpecial1End")
         return 
     else
         return 
     end
 end
 
-function AttackBothHeavy2Start_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothHeavy2Start_onUpdate() -- >34340
+    local b2 = "W_AttackBothHeavy1Start"
+    local b1 = "W_AttackBothLight1"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    if sp_kind == 161 then 
+        b2 = nil
+        b1 = "W_AttackBothLight3"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE) == TRUE then
         return 
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackBothHeavy2End")
+        return
+    -- Trick - Tricked - 4 Stage heavy attack 
+    elseif isExtended1HR1() == SawCleaver and env(1108, ACTION_ARM_R2) >= 100 and env(1116, 100975) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavy2End")
+        return
+    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavySpecial2Start")
         return 
+    elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavy2End")
+        return      
     else
         return 
     end
 end
 
-function AttackBothHeavy2End_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
-        return 
+function AttackBothHeavy2End_onUpdate() -- >34341
+    local l1 = "W_AttackBothLeft1"
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    if AttackCommonFunction( "W_AttackRightLight1", "W_AttackRightHeavy1Start", l1, "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+        return
+    -- Trick - Tricked - 4 Stage heavy attack
+    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavySpecial2End")
+        return  
     else
         return 
     end
 end
 
-function AttackBothHeavySpecial1SubStart_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
-        return 
-    elseif env(301, 0) == TRUE or env("アニメ終了か", 1) == TRUE then
-        act("特殊補間設定", 0, TRUE)
-        ExecEventAllBody("W_AttackBothHeavySpecial1Start")
-        return 
+function AttackBothHeavySpecial1SubStart_onUpdate() -- >34360
+    -- Force to Idle - 2H HeavySpecial1SubStart
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local b2 = "W_AttackBothHeavy2Start"
+    if isExtended1HR1() == SawCleaver then
+        b2 = "W_AttackBothHeavy1Start"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", b2, FALSE, TRUE) == TRUE then
+        return
+    elseif isExtended1HR1() ~= SawCleaver then -- Trick     
+        if env(301, 0) == TRUE or env("アニメ終了か", 1) == TRUE then
+            act("特殊補間設定", 0, TRUE)
+            ExecEventAllBody("W_AttackBothHeavySpecial1Start")
+            return
+        end 
     else
         return 
     end
 end
 
-function AttackBothHeavySpecial1Start_onUpdate()
+function AttackBothHeavySpecial1Start_onUpdate() -- >34350
+    -- Force to Idle - 2H HeavySpecial1Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     act("特殊補間設定", 0, FALSE)
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+    local b2 = "W_AttackBothHeavy2Start"
+    local b1 = "W_AttackBothLight1"
+    -- Trick - Tricked - 4 Stage heavy attack - Transition to second heavy
+    -- Trick - After Uncharged First Tricked R2 - Replace First R1 with Second R1
+    if isExtended1HR1() == SawCleaver then
+        b2 = "W_AttackBothHeavy2Start"
+        b1 = "W_AttackBothLight2"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE) == TRUE then
         return 
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackBothHeavySpecial1End")
@@ -7223,16 +8013,37 @@ function AttackBothHeavySpecial1Start_onUpdate()
     end
 end
 
-function AttackBothHeavySpecial1End_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
+function AttackBothHeavySpecial1End_onUpdate() -- >34351
+    -- Force to Idle - 2H HeavySpecial1End
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local b2 = "W_AttackBothHeavy2Start"
+    local b1 = "W_AttackBothLight1"
+    -- Trick - Tricked - 4 Stage heavy attack - Transition to second heavy
+    -- Trick - After Charged First Tricked R2 - Replace First R1 with Second R1
+    if isExtended1HR1() == SawCleaver then
+        b2 = "W_AttackBothHeavySpecial1SubStart"
+        b1 = "W_AttackBothLight2"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackBothHeavySpecial2Start_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothHeavySpecial2Start_onUpdate() -- >34370
+    -- Force to Idle - 2H HeavySpecial2Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local b2 = "W_AttackBothHeavy1Start"
+    -- Trick - Tricked - 4 Stage heavy attack - Transition to second heavy
+    if isExtended1HR1() == SawCleaver then
+        b2 = "W_AttackBothHeavy1Start"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", b2, FALSE, TRUE) == TRUE then
         return 
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackBothHeavySpecial2End")
@@ -7242,8 +8053,17 @@ function AttackBothHeavySpecial2Start_onUpdate()
     end
 end
 
-function AttackBothHeavySpecial2End_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothHeavySpecial2End_onUpdate() -- >34371
+    -- Force to Idle - 2H HeavySpecial2End
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    -- Trick - Tricked - 4 Stage heavy attack - Transition to second heavy
+    local b2 = "W_AttackBothHeavy1Start"
+    if isExtended1HR1() == SawCleaver then
+        b2 = "W_AttackBothBackstep"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7255,9 +8075,24 @@ function AttackBothHeavyWepBroken1Start_onUpdate()
     return 
 end
 
-function AttackBothHeavyWepBroken2Start_onUpdate()
-    AttackBothHeavy2Start_onUpdate()
-    return 
+function AttackBothHeavyWepBroken2Start_onUpdate() -- >34345
+    -- Force to Idle - 2H WepBrokenHeavy2Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    -- Trick - Left Tricked R1 - To Second Tricked R1
+    local b1 = "W_AttackBothLight1"
+    if isExtended1HR1() == SawCleaver then
+        b1 = "W_AttackBothLight2"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+        return 
+    elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
+        ExecEventAllBody("W_AttackBothHeavy2End")
+        return 
+    else
+        return 
+    end
 end
 
 function AttackBothHeavyWepBroken1SubStart_onUpdate()
@@ -7272,24 +8107,66 @@ function AttackBothHeavyWepBroken1SubStart_onUpdate()
     end
 end
 
-function AttackBothDash_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothDash_onUpdate() -- >34500
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    -- Force to Idle - Running 2H R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local b1 = "W_AttackBothLight1"
+    if isExtended1HR1() == SawCleaver then
+        b1 = "W_AttackBothLight2"
+    elseif sp_kind == 161 then 
+        b1 = "W_AttackBothLight2"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackBothDashSpecial_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothDashSpecial_onUpdate() -- >34510
+    -- Force to Idle - Unricking attack - Left to Right
+    local r1 = "W_AttackRightLight1"
+    -- Trick - Untricking Attack - Left to Right - Transition to Untricked Left R1
+    if isExtended1HR1() == SawCleaver then
+        r1 = "W_AttackRightHeavyWepBroken2Start"
+    end
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackBothLightStep_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothLightStep_onUpdate() -- >34900
+    local hand = HAND_RIGHT
+    local style = c_Style
+    local sp_kind = env("装備武器特殊カテゴリ番号取得", hand) 
+    if style == HAND_LEFT_BOTH then
+        hand = HAND_LEFT
+    end
+    -- Force to Idle - Rolling 2H R1
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    -- Trick - After Tricked Rolling R1 - Replace First R1 with Second R1
+    local b1 = "W_AttackBothLight1"
+    if isExtended1HR1() == SawCleaver then
+        b1 = "W_AttackBothLight2"
+    elseif sp_kind == 161 then 
+        b1 = "W_AttackBothLight2"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7312,24 +8189,66 @@ function AttackBothLightKick_onUpdate()
     end
 end
 
-function AttackBothHeavyKick_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothHeavyKick_onUpdate() -- >34600
+    -- Force to Idle - Running 2H R2
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local b2 = "W_AttackBothHeavy1Start"
+    local b1 = "W_AttackBothLight1"
+    -- Trick - Tricked - Running Heavy Attack to Transition to Heavy
+    if isExtended1HR1() == SawCleaver then
+        b2 = "W_AttackBothHeavySpecial2Start"
+        b1 = "W_AttackBothLight2"
+    end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackBothHeavyKickSpecial_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothHeavyKickSpecial_onUpdate() -- >34610
+    -- Force to Idle - Unricking attack - Right to Left
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    local r1 = "W_AttackRightLight1"
+    -- Trick - Unricking attack - Right to Left - Transition to Untricked Left R1
+    if isExtended1HR1() == SawCleaver then
+        r1 = "W_AttackRightLight2"
+    end
+    if AttackCommonFunction(r1, "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
         return 
     else
         return 
     end
 end
 
-function AttackBothBackstep_onUpdate()
-    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+function AttackBothBackstep_onUpdate() -- >34920
+-- Force to Idle - 2H Backstep
+if env(1116, 100972) == TRUE then
+    ExecEventAllBody("W_Idle")
+end
+local b1 = "W_AttackBothLight1"
+local b2 = "W_AttackBothHeavy1Start"
+local hand = HAND_RIGHT
+local style = c_Style
+if style == HAND_LEFT_BOTH then
+    hand = HAND_LEFT
+end
+local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+-- Farron Greatsword - Fourth 2H R1 to Fifth 2H R1
+if sp_kind == 161 then
+    b1 = "W_AttackBothHeavy1End"
+-- Trick - Saw Cleaver - AttackBothBackstep to AttackBothHeavy1Start
+elseif isExtended1HR1() == SawCleaver then
+    b2 = "W_AttackBothHeavy1Start"
+end
+if env(1116, 100440) == TRUE then
+    act(2001, 0.699999988079071)
+end
+    if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7549,7 +8468,13 @@ function AttackCrossbowRightFire_Upper_onUpdate()
     end
 end
 
-function AttackCrossbowRightReload_Upper_onUpdate()
+function AttackCrossbowRightReload_Upper_onUpdate() -- >31520
+    -- Trick = Trick Weapon State TRUE = Transformed - FALSE = Untransformed 
+    -- Force to Idle - Unricking
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
+    Trick = FALSE
     act("4方向移動閾値設定", 60, 80, 60, 60)
     local blend_type, lower_state = GetHalfBlendInfo()
     if CrossbowCommonFunction(blend_type) == TRUE then
@@ -7557,20 +8482,49 @@ function AttackCrossbowRightReload_Upper_onUpdate()
     elseif HalfBlendUpperCommonFunction(lower_state) == TRUE then
         return 
     elseif HalfBlendLowerCommonFunction(Event_AttackCrossbowRightReload, lower_state, FALSE, FALSE) == TRUE then
-        return 
+        return
+    elseif T2HLHW == TRUE and env(1116, 100970) == TRUE then
+        ExecEventHalfBlend(Event_HandChangeStart, blend_type)
+        T2HLHW = FALSE
+        return
+    elseif env(1116, 100971) == TRUE and UntrickAttack == TRUE then
+        UntrickAttack = FALSE
+        ExecEventAllBody("W_AttackBothHeavyKickSpecial")
+        return
+    elseif env(1116, 100973) == TRUE and UntrickAttack == TRUE then
+        UntrickAttack = FALSE
+        ExecEventAllBody("W_AttackBothDashSpecial")
+        return
+    elseif TWChangeWeapon == TRUE and env(1116, 100970) == TRUE then
+        ExecEventHalfBlend(Event_WeaponChangeStart, blend_type)
+        TWChangeWeapon = FALSE
+        return
     else
         return 
     end
-end
+end 
 
-function AttackCrossbowRightEmpty_Upper_onUpdate()
+function AttackCrossbowRightEmpty_Upper_onUpdate() -- >31510
+    -- Trick = Trick Weapon State TRUE = Transformed - FALSE = Untransformed
+    -- Force to Idle - Tricking
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end 
+    Trick = TRUE
     local blend_type, lower_state = GetHalfBlendInfo()
     if CrossbowCommonFunction(blend_type) == TRUE then
         return 
     elseif HalfBlendUpperCommonFunction(lower_state) == TRUE then
         return 
-    elseif HalfBlendLowerCommonFunction(Event_AttackCrossbowRightEmpty, lower_state, FALSE, FALSE) == TRUE then
-        return 
+    elseif HalfBlendLowerCommonFunction(Event_AttackCrossbowRightEmpty, lower_state, FALSE, FALSE) == TRUE then -- MaybeBroken - A return is potentially missing. Double check this
+    elseif env(1116, 100971) == TRUE and TrickAttack == TRUE then
+        TrickAttack = FALSE
+        ExecEventAllBody("W_AttackRightHeavyKickSpecial")
+        return
+    elseif env(1116, 100973) == TRUE and TrickAttack == TRUE then
+        TrickAttack = FALSE
+        ExecEventAllBody("W_AttackRightLightDashSpecial")
+        return
     else
         return 
     end
@@ -9053,7 +10007,7 @@ function SpecialAttackRightHeavy_onUpdate()
     end
 end
 
-function AttackSpinStart_Upper_onUpdate()
+function AttackSpinStart_Upper_onUpdate() -- >36400
     local r1 = "W_AttackRightLight2"
     local r2 = "W_AttackSpinHeavy"
     local b1 = "W_AttackBothLight2"
@@ -9072,13 +10026,19 @@ function AttackSpinStart_Upper_onUpdate()
         end
     end
     if env(301, 0) == FALSE then
-        r2 = "W_AttackRightHeavy2Start"
-        b2 = "W_AttackBothHeavy2Start"
-        if kind == WEAPON_CATEGORY_CURVEDSWORD then
-            local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
-            if sp_kind ~= 51 and sp_kind ~= 101 and sp_kind ~= 137 and sp_kind ~= 139 and sp_kind ~= 195 then
-                r2 = "W_AttackRightHeavy1Start"
-                b2 = "W_AttackBothHeavy1Start"
+        -- Trick - onUpdate fix for non transition WA
+        if isExtended1HR1() == SawCleaver then
+            r2 = "W_AttackRightHeavy1Start"
+            b2 = "W_AttackBothHeavy2Start"
+        else
+            r2 = "W_AttackRightHeavy2Start"
+            b2 = "W_AttackBothHeavy2Start"
+            if kind == WEAPON_CATEGORY_CURVEDSWORD then
+                local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
+                if sp_kind ~= 51 and sp_kind ~= 101 and sp_kind ~= 137 and sp_kind ~= 139 and sp_kind ~= 195 then
+                    r2 = "W_AttackRightHeavy1Start"
+                    b2 = "W_AttackBothHeavy1Start"
+                end
             end
         end
     end
@@ -9088,6 +10048,10 @@ function AttackSpinStart_Upper_onUpdate()
     end
     if env(1116, 100440) == TRUE then
         act(2001, 1.20000004768372)
+    end
+    -- Trick - Saw cleaver - Untricked WA change R1 transition and R2 transition,
+    if isExtended1HR1() == SawCleaver then
+        r1 = "W_AttackRightHeavyWepBroken2Start"
     end
     if SwordArtsCommonFunction(r1, r2, "W_AttackLeftLight2", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE, TRUE, GEN_TRANS_LEFT) == TRUE then
         act(2001, 1)
@@ -9123,7 +10087,7 @@ function AttackSpinLight_onUpdate()
     end
 end
 
-function AttackSpinHeavy_onUpdate()
+function AttackSpinHeavy_onUpdate() -- >36420
     local r1 = "W_AttackRightLight2"
     local r2 = "W_AttackRightHeavy2Start"
     local b1 = "W_AttackBothLight2"
@@ -9150,6 +10114,11 @@ function AttackSpinHeavy_onUpdate()
         r1 = "W_AttackSpinLight"
         b1 = "W_AttackSpinLight"
         is_artsr1 = TRUE
+    end
+    -- Trick - Saw cleaver - Untricked WA change R1 transition and R2 transition,
+    if isExtended1HR1() == SawCleaver then
+        r1 = "W_AttackRightHeavyWepBroken2Start"
+        r2 = "W_AttackRightHeavy1Start"
     end
     if SwordArtsCommonFunction(r1, r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", b1, b2, FALSE, is_artsr1, FALSE, GEN_TRANS_LEFT) == TRUE then
         return 
@@ -9405,7 +10374,11 @@ function OneShotNoGenTrans_Activate()
     return 
 end
 
-function OneShotNoGenTransStart_onUpdate()
+function OneShotNoGenTransStart_onUpdate() -- >38700
+    -- Force to Idle - OneShotNoGenTransStart
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     local r1 = "W_AttackRightLight1"
     local r2 = "W_AttackRightHeavy1Start"
     local b1 = "W_AttackBothLight1"
@@ -9424,6 +10397,10 @@ function OneShotNoGenTransStart_onUpdate()
     if sp_kind == 247 then
         r1 = "W_AttackRightLight2"
         b1 = "W_AttackBothLight2"
+    end
+    -- Trick - Saw cleaver - Tricked WA change R1 transition
+    if isExtended1HR1() == SawCleaver then
+        b1 = "W_AttackBothHeavy1Start"
     end
     if SwordArtsCommonFunction(r1, r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", b1, b2, FALSE, FALSE, FALSE, FALSE) == TRUE then
         return 
@@ -11594,7 +12571,7 @@ function MagicLaunchRight_Upper_onUpdate()
         end
         local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
         local button = ACTION_ARM_R1
-        if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+        if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
             button = ACTION_ARM_R2
         end
         if IsHoldMagic() == TRUE then
@@ -11671,7 +12648,7 @@ function MagicLoopRight_Upper_onUpdate()
     end
     local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
     local button = ACTION_ARM_R1
-    if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+    if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
         button = ACTION_ARM_R2
     end
     if env(1108, button) <= 0 then
@@ -11723,7 +12700,7 @@ function MagicLoopRightLvl2_Upper_onUpdate()
     end
     local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
     local button = ACTION_ARM_R1
-    if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+    if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
         button = ACTION_ARM_R2
     end
     if env(1108, button) <= 0 then
@@ -11819,7 +12796,7 @@ function MagicLaunchLeft_Upper_onUpdate()
     elseif env(313) == TRUE or env("アニメ終了か", 1) == TRUE then
         local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
         local button = ACTION_ARM_L1
-        if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+        if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
             button = ACTION_ARM_L2
         end
         if IsHoldMagic() == TRUE then
@@ -11891,7 +12868,7 @@ function MagicLoopLeft_Upper_onUpdate()
     end
     local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
     local button = ACTION_ARM_L1
-    if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+    if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
         button = ACTION_ARM_L2
     end
     if env(1108, button) <= 0 then
@@ -11938,7 +12915,7 @@ function MagicLoopLeftLvl2_Upper_onUpdate()
     end
     local sp_kind = env("装備武器特殊カテゴリ番号取得", HAND_LEFT)
     local button = ACTION_ARM_L1
-    if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 then
+    if sp_kind == 178 or sp_kind == 207 or sp_kind == 217 or sp_kind == 220 or sp_kind == 234 or sp_kind == 257 or sp_kind == 158 then
         button = ACTION_ARM_L2
     end
     if env(1108, button) <= 0 then
