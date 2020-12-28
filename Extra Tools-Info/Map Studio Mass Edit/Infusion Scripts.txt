@@ -257,3 +257,22 @@ param EquipParamWeapon: id 22181300: Unk22: = 0;
 param EquipParamWeapon: id 22181300: Unk23: = 0;
 param EquipParamWeapon: id 22181300: Unk26: = 0;
 param EquipParamWeapon: id 22181300: attackElementCorrectId: = 10000;
+
+---------------------------------------------------------------------------------------------------------
+
+Blessed Gem Infusion Map Studio Mass Edit Script:
+
+param EquipParamWeapon: id 22181400: residentSpEffectId2: = 129001400;
+param EquipParamWeapon: id 22181400: materialSetId: = 1400;
+param EquipParamWeapon: id 22181400: reinforceTypeId: = 1400;
+param EquipParamWeapon: id 22181400: correctType: = 0;
+param EquipParamWeapon: id 22181400: spAttribute: = 1;
+param EquipParamWeapon: id 22181400: baseChangeCategory: = 0;
+param EquipParamWeapon: id 22181400: isDragonSlayer: = 1;
+param EquipParamWeapon: id 22181400: isDeposit: = 1;
+param EquipParamWeapon: id 22181400: disableMultiDropShare: = 1;
+param EquipParamWeapon: id 22181400: Unk21: = 0;
+param EquipParamWeapon: id 22181400: Unk22: = 0;
+param EquipParamWeapon: id 22181400: Unk23: = 0;
+param EquipParamWeapon: id 22181400: Unk26: = 0;
+param EquipParamWeapon: id 22181400: attackElementCorrectId: = 10014;
