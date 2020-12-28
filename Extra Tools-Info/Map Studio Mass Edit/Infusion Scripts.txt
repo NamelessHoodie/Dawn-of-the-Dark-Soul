@@ -276,3 +276,25 @@ param EquipParamWeapon: id 22181400: Unk22: = 0;
 param EquipParamWeapon: id 22181400: Unk23: = 0;
 param EquipParamWeapon: id 22181400: Unk26: = 0;
 param EquipParamWeapon: id 22181400: attackElementCorrectId: = 10014;
+
+---------------------------------------------------------------------------------------------------------
+
+Hollow Gem Infusion Map Studio Mass Edit Script:
+
+param EquipParamWeapon: id 22181500: residentSpEffectId1: = 129000015;
+param EquipParamWeapon: id 22181500: residentSpEffectId2: = 129001500;
+param EquipParamWeapon: id 22181500: materialSetId: = 1500;
+param EquipParamWeapon: id 22181500: reinforceTypeId: = 1500;
+param EquipParamWeapon: id 22181500: correctType: = 0;
+param EquipParamWeapon: id 22181500: spAttribute: = 1;
+param EquipParamWeapon: id 22181500: baseChangeCategory: = 1;
+param EquipParamWeapon: id 22181500: isDragonSlayer: = 1;
+param EquipParamWeapon: id 22181500: isDeposit: = 1;
+param EquipParamWeapon: id 22181500: disableMultiDropShare: = 1;
+param EquipParamWeapon: id 22181500: Unk21: = 0;
+param EquipParamWeapon: id 22181500: Unk22: = 0;
+param EquipParamWeapon: id 22181500: Unk23: = 0;
+param EquipParamWeapon: id 22181500: Unk26: = 0;
+param EquipParamWeapon: id 22181500: attackElementCorrectId: = 10015;
+
+(Remember to make sure bleed, poison or other speffects existing in the weapon do not get overwritten)
