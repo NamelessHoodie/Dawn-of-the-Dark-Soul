@@ -240,3 +240,20 @@ param EquipParamWeapon: id 22181200: attackElementCorrectId: = 10000;
 
 (Remember to make sure poison or other speffects existing in the weapon do not get overwritten)
 
+---------------------------------------------------------------------------------------------------------
+
+Raw Gem Infusion Map Studio Mass Edit Script:
+
+param EquipParamWeapon: id 22181300: materialSetId: = 1300;
+param EquipParamWeapon: id 22181300: reinforceTypeId: = 1300;
+param EquipParamWeapon: id 22181300: correctType: = 0;
+param EquipParamWeapon: id 22181300: spAttribute: = 1;
+param EquipParamWeapon: id 22181300: baseChangeCategory: = 1;
+param EquipParamWeapon: id 22181300: isDragonSlayer: = 0;
+param EquipParamWeapon: id 22181300: isDeposit: = 1;
+param EquipParamWeapon: id 22181300: disableMultiDropShare: = 1;
+param EquipParamWeapon: id 22181300: Unk21: = 0;
+param EquipParamWeapon: id 22181300: Unk22: = 0;
+param EquipParamWeapon: id 22181300: Unk23: = 0;
+param EquipParamWeapon: id 22181300: Unk26: = 0;
+param EquipParamWeapon: id 22181300: attackElementCorrectId: = 10000;
