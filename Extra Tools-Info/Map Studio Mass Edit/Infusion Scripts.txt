@@ -214,7 +214,7 @@ param EquipParamWeapon: id BASEWEPID1000: attackElementCorrectId: = 10000;
 
 Poison Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id BASEWEPID1100: residentSpEffectId2: = 129001100;
+param EquipParamWeapon: id BASEWEPID1100: spEffectBehaviorId2: = 129001100;
 param EquipParamWeapon: id BASEWEPID1100: materialSetId: = 1100;
 param EquipParamWeapon: id BASEWEPID1100: reinforceTypeId: = 1100;
 param EquipParamWeapon: id BASEWEPID1100: correctType: = 0;
@@ -235,7 +235,7 @@ param EquipParamWeapon: id BASEWEPID1100: attackElementCorrectId: = 10000;
 
 Bleed Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id BASEWEPID1200: residentSpEffectId2: = 129001200;
+param EquipParamWeapon: id BASEWEPID1200: spEffectBehaviorId2: = 129001200;
 param EquipParamWeapon: id BASEWEPID1200: materialSetId: = 1200;
 param EquipParamWeapon: id BASEWEPID1200: reinforceTypeId: = 1200;
 param EquipParamWeapon: id BASEWEPID1200: correctType: = 0;
