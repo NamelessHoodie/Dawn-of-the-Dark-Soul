@@ -1,5 +1,8 @@
 Before using this script, search and replace the following "variables" with your desired parameters 
 
+BASEWEPID :This is your weapon's base ID. You will find it by removing 4 digits from the end of your EquipParamWeapon row ID. 
+          :Example, if your row ID is 22180000 then your BASEWEPID will be 2218
+
 INTSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITHSCALE should be set to the same value.
 
 FAITHSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITHSCALE should be set to the same value.
@@ -16,76 +19,76 @@ DAMAGETHUNDER :This is your lightning damage, for common usage. This should be s
 
 Heavy Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180100: materialSetId: = 200;
-param EquipParamWeapon: id 22180100: reinforceTypeId: = 100;
-param EquipParamWeapon: id 22180100: correctType: = 1;
-param EquipParamWeapon: id 22180100: spAttribute: = 1;
-param EquipParamWeapon: id 22180100: baseChangeCategory: = 1;
-param EquipParamWeapon: id 22180100: isDragonSlayer: = 0;
-param EquipParamWeapon: id 22180100: isDeposit: = 0;
-param EquipParamWeapon: id 22180100: disableMultiDropShare: = 0;
-param EquipParamWeapon: id 22180100: Unk21: = 0;
-param EquipParamWeapon: id 22180100: Unk22: = 0;
-param EquipParamWeapon: id 22180100: Unk23: = 0;
-param EquipParamWeapon: id 22180100: Unk26: = 0;
-param EquipParamWeapon: id 22180100: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0100: materialSetId: = 200;
+param EquipParamWeapon: id BASEWEPID0100: reinforceTypeId: = 100;
+param EquipParamWeapon: id BASEWEPID0100: correctType: = 1;
+param EquipParamWeapon: id BASEWEPID0100: spAttribute: = 1;
+param EquipParamWeapon: id BASEWEPID0100: baseChangeCategory: = 1;
+param EquipParamWeapon: id BASEWEPID0100: isDragonSlayer: = 0;
+param EquipParamWeapon: id BASEWEPID0100: isDeposit: = 0;
+param EquipParamWeapon: id BASEWEPID0100: disableMultiDropShare: = 0;
+param EquipParamWeapon: id BASEWEPID0100: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0100: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID0100: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0100: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0100: attackElementCorrectId: = 10000;
 
 ---------------------------------------------------------------------------------------------------------
 
 Sharp Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180200: materialSetId: = 100;
-param EquipParamWeapon: id 22180200: reinforceTypeId: = 5000;
-param EquipParamWeapon: id 22180200: correctType: = 9;
-param EquipParamWeapon: id 22180200: spAttribute: = 1;
-param EquipParamWeapon: id 22180200: baseChangeCategory: = 0;
-param EquipParamWeapon: id 22180200: isDragonSlayer: = 1;
-param EquipParamWeapon: id 22180200: isDeposit: = 0;
-param EquipParamWeapon: id 22180200: disableMultiDropShare: = 0;
-param EquipParamWeapon: id 22180200: Unk21: = 0;
-param EquipParamWeapon: id 22180200: Unk22: = 0;
-param EquipParamWeapon: id 22180200: Unk23: = 0;
-param EquipParamWeapon: id 22180200: Unk26: = 0;
-param EquipParamWeapon: id 22180200: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0200: materialSetId: = 100;
+param EquipParamWeapon: id BASEWEPID0200: reinforceTypeId: = 5000;
+param EquipParamWeapon: id BASEWEPID0200: correctType: = 9;
+param EquipParamWeapon: id BASEWEPID0200: spAttribute: = 1;
+param EquipParamWeapon: id BASEWEPID0200: baseChangeCategory: = 0;
+param EquipParamWeapon: id BASEWEPID0200: isDragonSlayer: = 1;
+param EquipParamWeapon: id BASEWEPID0200: isDeposit: = 0;
+param EquipParamWeapon: id BASEWEPID0200: disableMultiDropShare: = 0;
+param EquipParamWeapon: id BASEWEPID0200: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0200: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID0200: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0200: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0200: attackElementCorrectId: = 10000;
 
 ---------------------------------------------------------------------------------------------------------
 
 Refined Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180300: materialSetId: = 300;
-param EquipParamWeapon: id 22180300: reinforceTypeId: = 300;
-param EquipParamWeapon: id 22180300: correctType: = 8;
-param EquipParamWeapon: id 22180300: spAttribute: = 1;
-param EquipParamWeapon: id 22180300: baseChangeCategory: = 1;
-param EquipParamWeapon: id 22180300: isDragonSlayer: = 1;
-param EquipParamWeapon: id 22180300: isDeposit: = 1;
-param EquipParamWeapon: id 22180300: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22180300: Unk21: = 0;
-param EquipParamWeapon: id 22180300: Unk22: = 0;
-param EquipParamWeapon: id 22180300: Unk23: = 0;
-param EquipParamWeapon: id 22180300: Unk26: = 0;
-param EquipParamWeapon: id 22180300: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0300: materialSetId: = 300;
+param EquipParamWeapon: id BASEWEPID0300: reinforceTypeId: = 300;
+param EquipParamWeapon: id BASEWEPID0300: correctType: = 8;
+param EquipParamWeapon: id BASEWEPID0300: spAttribute: = 1;
+param EquipParamWeapon: id BASEWEPID0300: baseChangeCategory: = 1;
+param EquipParamWeapon: id BASEWEPID0300: isDragonSlayer: = 1;
+param EquipParamWeapon: id BASEWEPID0300: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID0300: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID0300: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0300: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID0300: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0300: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0300: attackElementCorrectId: = 10000;
 
 ---------------------------------------------------------------------------------------------------------
 
 Simple Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180400: atkBaseMagic: = DAMAGEMAGIC;
-param EquipParamWeapon: id 22180400: corretMagic: = INTSCALE;
-param EquipParamWeapon: id 22180400: residentSpEffectId2: = 129000500;
-param EquipParamWeapon: id 22180400: materialSetId: = 500;
-param EquipParamWeapon: id 22180400: reinforceTypeId: = 500;
-param EquipParamWeapon: id 22180400: correctType: = 8;
-param EquipParamWeapon: id 22180400: spAttribute: = 3;
-param EquipParamWeapon: id 22180400: baseChangeCategory: = 1;
-param EquipParamWeapon: id 22180400: isDragonSlayer: = 0;
-param EquipParamWeapon: id 22180400: isDeposit: = 1;
-param EquipParamWeapon: id 22180400: disableMultiDropShare: = 0;
-param EquipParamWeapon: id 22180400: Unk21: = 0;
-param EquipParamWeapon: id 22180400: Unk22: = 0;
-param EquipParamWeapon: id 22180400: Unk23: = 0;
-param EquipParamWeapon: id 22180400: Unk26: = 0;
-param EquipParamWeapon: id 22180400: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0400: atkBaseMagic: = DAMAGEMAGIC;
+param EquipParamWeapon: id BASEWEPID0400: corretMagic: = INTSCALE;
+param EquipParamWeapon: id BASEWEPID0400: residentSpEffectId2: = 129000500;
+param EquipParamWeapon: id BASEWEPID0400: materialSetId: = 500;
+param EquipParamWeapon: id BASEWEPID0400: reinforceTypeId: = 500;
+param EquipParamWeapon: id BASEWEPID0400: correctType: = 8;
+param EquipParamWeapon: id BASEWEPID0400: spAttribute: = 3;
+param EquipParamWeapon: id BASEWEPID0400: baseChangeCategory: = 1;
+param EquipParamWeapon: id BASEWEPID0400: isDragonSlayer: = 0;
+param EquipParamWeapon: id BASEWEPID0400: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID0400: disableMultiDropShare: = 0;
+param EquipParamWeapon: id BASEWEPID0400: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0400: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID0400: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0400: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0400: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseMagic to the same value of atkBasePhysics)
 
@@ -93,21 +96,21 @@ param EquipParamWeapon: id 22180400: attackElementCorrectId: = 10000;
 
 Crystal Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180500: atkBaseMagic: = DAMAGEMAGIC;
-param EquipParamWeapon: id 22180500: corretMagic: = INTSCALE;
-param EquipParamWeapon: id 22180500: materialSetId: = 400;
-param EquipParamWeapon: id 22180500: reinforceTypeId: = 400;
-param EquipParamWeapon: id 22180500: correctType: = 8;
-param EquipParamWeapon: id 22180500: spAttribute: = 3;
-param EquipParamWeapon: id 22180500: baseChangeCategory: = 0;
-param EquipParamWeapon: id 22180500: isDragonSlayer: = 0;
-param EquipParamWeapon: id 22180500: isDeposit: = 1;
-param EquipParamWeapon: id 22180500: disableMultiDropShare: = 0;
-param EquipParamWeapon: id 22180500: Unk21: = 0;
-param EquipParamWeapon: id 22180500: Unk22: = 0;
-param EquipParamWeapon: id 22180500: Unk23: = 0;
-param EquipParamWeapon: id 22180500: Unk26: = 0;
-param EquipParamWeapon: id 22180500: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0500: atkBaseMagic: = DAMAGEMAGIC;
+param EquipParamWeapon: id BASEWEPID0500: corretMagic: = INTSCALE;
+param EquipParamWeapon: id BASEWEPID0500: materialSetId: = 400;
+param EquipParamWeapon: id BASEWEPID0500: reinforceTypeId: = 400;
+param EquipParamWeapon: id BASEWEPID0500: correctType: = 8;
+param EquipParamWeapon: id BASEWEPID0500: spAttribute: = 3;
+param EquipParamWeapon: id BASEWEPID0500: baseChangeCategory: = 0;
+param EquipParamWeapon: id BASEWEPID0500: isDragonSlayer: = 0;
+param EquipParamWeapon: id BASEWEPID0500: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID0500: disableMultiDropShare: = 0;
+param EquipParamWeapon: id BASEWEPID0500: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0500: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID0500: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0500: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0500: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseMagic to the same value of atkBasePhysics)
 
@@ -115,20 +118,20 @@ param EquipParamWeapon: id 22180500: attackElementCorrectId: = 10000;
 
 Fire Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180600: atkBaseFire: = DAMAGEFIRE;
-param EquipParamWeapon: id 22180600: materialSetId: = 600;
-param EquipParamWeapon: id 22180600: reinforceTypeId: = 600;
-param EquipParamWeapon: id 22180600: correctType: = 0;
-param EquipParamWeapon: id 22180600: spAttribute: = 2;
-param EquipParamWeapon: id 22180600: baseChangeCategory: = 0;
-param EquipParamWeapon: id 22180600: isDragonSlayer: = 1;
-param EquipParamWeapon: id 22180600: isDeposit: = 1;
-param EquipParamWeapon: id 22180600: disableMultiDropShare: = 0;
-param EquipParamWeapon: id 22180600: Unk21: = 0;
-param EquipParamWeapon: id 22180600: Unk22: = 0;
-param EquipParamWeapon: id 22180600: Unk23: = 0;
-param EquipParamWeapon: id 22180600: Unk26: = 0;
-param EquipParamWeapon: id 22180600: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0600: atkBaseFire: = DAMAGEFIRE;
+param EquipParamWeapon: id BASEWEPID0600: materialSetId: = 600;
+param EquipParamWeapon: id BASEWEPID0600: reinforceTypeId: = 600;
+param EquipParamWeapon: id BASEWEPID0600: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID0600: spAttribute: = 2;
+param EquipParamWeapon: id BASEWEPID0600: baseChangeCategory: = 0;
+param EquipParamWeapon: id BASEWEPID0600: isDragonSlayer: = 1;
+param EquipParamWeapon: id BASEWEPID0600: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID0600: disableMultiDropShare: = 0;
+param EquipParamWeapon: id BASEWEPID0600: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0600: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID0600: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0600: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0600: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseFire to the same value of atkBasePhysics)
 
@@ -136,22 +139,22 @@ param EquipParamWeapon: id 22180600: attackElementCorrectId: = 10000;
 
 Chaos Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180700: atkBaseFire: = DAMAGEFIRE;
-param EquipParamWeapon: id 22180700: corretMagic: = INTSCALE;
-param EquipParamWeapon: id 22180700: corretFaith: = FAITHSCALE;
-param EquipParamWeapon: id 22180700: materialSetId: = 700;
-param EquipParamWeapon: id 22180700: reinforceTypeId: = 700;
-param EquipParamWeapon: id 22180700: correctType: = 0;
-param EquipParamWeapon: id 22180700: spAttribute: = 2;
-param EquipParamWeapon: id 22180700: baseChangeCategory: = 1;
-param EquipParamWeapon: id 22180700: isDragonSlayer: = 1;
-param EquipParamWeapon: id 22180700: isDeposit: = 1;
-param EquipParamWeapon: id 22180700: disableMultiDropShare: = 0;
-param EquipParamWeapon: id 22180700: Unk21: = 0;
-param EquipParamWeapon: id 22180700: Unk22: = 4;
-param EquipParamWeapon: id 22180700: Unk23: = 0;
-param EquipParamWeapon: id 22180700: Unk26: = 0;
-param EquipParamWeapon: id 22180700: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0700: atkBaseFire: = DAMAGEFIRE;
+param EquipParamWeapon: id BASEWEPID0700: corretMagic: = INTSCALE;
+param EquipParamWeapon: id BASEWEPID0700: corretFaith: = FAITHSCALE;
+param EquipParamWeapon: id BASEWEPID0700: materialSetId: = 700;
+param EquipParamWeapon: id BASEWEPID0700: reinforceTypeId: = 700;
+param EquipParamWeapon: id BASEWEPID0700: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID0700: spAttribute: = 2;
+param EquipParamWeapon: id BASEWEPID0700: baseChangeCategory: = 1;
+param EquipParamWeapon: id BASEWEPID0700: isDragonSlayer: = 1;
+param EquipParamWeapon: id BASEWEPID0700: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID0700: disableMultiDropShare: = 0;
+param EquipParamWeapon: id BASEWEPID0700: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0700: Unk22: = 4;
+param EquipParamWeapon: id BASEWEPID0700: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0700: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0700: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseFire to the same value of atkBasePhysics)
 
@@ -159,21 +162,21 @@ param EquipParamWeapon: id 22180700: attackElementCorrectId: = 10000;
 
 Lightning Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180400: atkBaseThunder: = DAMAGETHUNDER;
-param EquipParamWeapon: id 22180800: corretFaith: = FAITHSCALE;
-param EquipParamWeapon: id 22180800: materialSetId: = 800;
-param EquipParamWeapon: id 22180800: reinforceTypeId: = 800;
-param EquipParamWeapon: id 22180800: correctType: = 0;
-param EquipParamWeapon: id 22180800: spAttribute: = 6;
-param EquipParamWeapon: id 22180800: baseChangeCategory: = 0;
-param EquipParamWeapon: id 22180800: isDragonSlayer: = 0;
-param EquipParamWeapon: id 22180800: isDeposit: = 0;
-param EquipParamWeapon: id 22180800: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22180800: Unk21: = 0;
-param EquipParamWeapon: id 22180800: Unk22: = 0;
-param EquipParamWeapon: id 22180800: Unk23: = 0;
-param EquipParamWeapon: id 22180800: Unk26: = 0;
-param EquipParamWeapon: id 22180800: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0400: atkBaseThunder: = DAMAGETHUNDER;
+param EquipParamWeapon: id BASEWEPID0800: corretFaith: = FAITHSCALE;
+param EquipParamWeapon: id BASEWEPID0800: materialSetId: = 800;
+param EquipParamWeapon: id BASEWEPID0800: reinforceTypeId: = 800;
+param EquipParamWeapon: id BASEWEPID0800: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID0800: spAttribute: = 6;
+param EquipParamWeapon: id BASEWEPID0800: baseChangeCategory: = 0;
+param EquipParamWeapon: id BASEWEPID0800: isDragonSlayer: = 0;
+param EquipParamWeapon: id BASEWEPID0800: isDeposit: = 0;
+param EquipParamWeapon: id BASEWEPID0800: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID0800: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0800: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID0800: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0800: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0800: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseThunder to the same value of atkBasePhysics)
 
@@ -181,20 +184,20 @@ param EquipParamWeapon: id 22180800: attackElementCorrectId: = 10000;
 
 Deep Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180900: atkBaseDark: = DAMAGEDARK;
-param EquipParamWeapon: id 22180900: materialSetId: = 900;
-param EquipParamWeapon: id 22180900: reinforceTypeId: = 900;
-param EquipParamWeapon: id 22180900: correctType: = 0;
-param EquipParamWeapon: id 22180900: spAttribute: = 9;
-param EquipParamWeapon: id 22180900: baseChangeCategory: = 1;
-param EquipParamWeapon: id 22180900: isDragonSlayer: = 0;
-param EquipParamWeapon: id 22180900: isDeposit: = 0;
-param EquipParamWeapon: id 22180900: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22180900: Unk21: = 0;
-param EquipParamWeapon: id 22180900: Unk22: = 0;
-param EquipParamWeapon: id 22180900: Unk23: = 0;
-param EquipParamWeapon: id 22180900: Unk26: = 0;
-param EquipParamWeapon: id 22180900: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0900: atkBaseDark: = DAMAGEDARK;
+param EquipParamWeapon: id BASEWEPID0900: materialSetId: = 900;
+param EquipParamWeapon: id BASEWEPID0900: reinforceTypeId: = 900;
+param EquipParamWeapon: id BASEWEPID0900: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID0900: spAttribute: = 9;
+param EquipParamWeapon: id BASEWEPID0900: baseChangeCategory: = 1;
+param EquipParamWeapon: id BASEWEPID0900: isDragonSlayer: = 0;
+param EquipParamWeapon: id BASEWEPID0900: isDeposit: = 0;
+param EquipParamWeapon: id BASEWEPID0900: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID0900: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID0900: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID0900: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID0900: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID0900: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseDark to the same value of atkBasePhysics)
 
@@ -202,22 +205,22 @@ param EquipParamWeapon: id 22180900: attackElementCorrectId: = 10000;
 
 Dark Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22181000: atkBaseDark: = DAMAGEDARK;
-param EquipParamWeapon: id 22181000: corretMagic: = INTSCALE;
-param EquipParamWeapon: id 22181000: corretFaith: = FAITHSCALE;
-param EquipParamWeapon: id 22181000: materialSetId: = 1000;
-param EquipParamWeapon: id 22181000: reinforceTypeId: = 1000;
-param EquipParamWeapon: id 22181000: correctType: = 0;
-param EquipParamWeapon: id 22181000: spAttribute: = 9;
-param EquipParamWeapon: id 22181000: baseChangeCategory: = 0;
-param EquipParamWeapon: id 22181000: isDragonSlayer: = 1;
-param EquipParamWeapon: id 22181000: isDeposit: = 0;
-param EquipParamWeapon: id 22181000: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22181000: Unk21: = 0;
-param EquipParamWeapon: id 22181000: Unk22: = 0;
-param EquipParamWeapon: id 22181000: Unk23: = 0;
-param EquipParamWeapon: id 22181000: Unk26: = 4;
-param EquipParamWeapon: id 22181000: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID1000: atkBaseDark: = DAMAGEDARK;
+param EquipParamWeapon: id BASEWEPID1000: corretMagic: = INTSCALE;
+param EquipParamWeapon: id BASEWEPID1000: corretFaith: = FAITHSCALE;
+param EquipParamWeapon: id BASEWEPID1000: materialSetId: = 1000;
+param EquipParamWeapon: id BASEWEPID1000: reinforceTypeId: = 1000;
+param EquipParamWeapon: id BASEWEPID1000: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID1000: spAttribute: = 9;
+param EquipParamWeapon: id BASEWEPID1000: baseChangeCategory: = 0;
+param EquipParamWeapon: id BASEWEPID1000: isDragonSlayer: = 1;
+param EquipParamWeapon: id BASEWEPID1000: isDeposit: = 0;
+param EquipParamWeapon: id BASEWEPID1000: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID1000: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID1000: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID1000: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID1000: Unk26: = 4;
+param EquipParamWeapon: id BASEWEPID1000: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseDark to the same value of atkBasePhysics)
 
@@ -225,20 +228,20 @@ param EquipParamWeapon: id 22181000: attackElementCorrectId: = 10000;
 
 Poison Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22181100: residentSpEffectId2: = 129001100;
-param EquipParamWeapon: id 22181100: materialSetId: = 1100;
-param EquipParamWeapon: id 22181100: reinforceTypeId: = 1100;
-param EquipParamWeapon: id 22181100: correctType: = 0;
-param EquipParamWeapon: id 22181100: spAttribute: = 1;
-param EquipParamWeapon: id 22181100: baseChangeCategory: = 1;
-param EquipParamWeapon: id 22181100: isDragonSlayer: = 1;
-param EquipParamWeapon: id 22181100: isDeposit: = 0;
-param EquipParamWeapon: id 22181100: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22181100: Unk21: = 0;
-param EquipParamWeapon: id 22181100: Unk22: = 0;
-param EquipParamWeapon: id 22181100: Unk23: = 0;
-param EquipParamWeapon: id 22181100: Unk26: = 0;
-param EquipParamWeapon: id 22181100: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID1100: residentSpEffectId2: = 129001100;
+param EquipParamWeapon: id BASEWEPID1100: materialSetId: = 1100;
+param EquipParamWeapon: id BASEWEPID1100: reinforceTypeId: = 1100;
+param EquipParamWeapon: id BASEWEPID1100: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID1100: spAttribute: = 1;
+param EquipParamWeapon: id BASEWEPID1100: baseChangeCategory: = 1;
+param EquipParamWeapon: id BASEWEPID1100: isDragonSlayer: = 1;
+param EquipParamWeapon: id BASEWEPID1100: isDeposit: = 0;
+param EquipParamWeapon: id BASEWEPID1100: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID1100: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID1100: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID1100: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID1100: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID1100: attackElementCorrectId: = 10000;
 
 (Remember to make sure bleed or other speffects existing in the weapon do not get overwritten)
 
@@ -246,20 +249,20 @@ param EquipParamWeapon: id 22181100: attackElementCorrectId: = 10000;
 
 Bleed Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22181200: residentSpEffectId2: = 129001200;
-param EquipParamWeapon: id 22181200: materialSetId: = 1200;
-param EquipParamWeapon: id 22181200: reinforceTypeId: = 1200;
-param EquipParamWeapon: id 22181200: correctType: = 0;
-param EquipParamWeapon: id 22181200: spAttribute: = 1;
-param EquipParamWeapon: id 22181200: baseChangeCategory: = 0;
-param EquipParamWeapon: id 22181200: isDragonSlayer: = 0;
-param EquipParamWeapon: id 22181200: isDeposit: = 1;
-param EquipParamWeapon: id 22181200: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22181200: Unk21: = 0;
-param EquipParamWeapon: id 22181200: Unk22: = 0;
-param EquipParamWeapon: id 22181200: Unk23: = 0;
-param EquipParamWeapon: id 22181200: Unk26: = 0;
-param EquipParamWeapon: id 22181200: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID1200: residentSpEffectId2: = 129001200;
+param EquipParamWeapon: id BASEWEPID1200: materialSetId: = 1200;
+param EquipParamWeapon: id BASEWEPID1200: reinforceTypeId: = 1200;
+param EquipParamWeapon: id BASEWEPID1200: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID1200: spAttribute: = 1;
+param EquipParamWeapon: id BASEWEPID1200: baseChangeCategory: = 0;
+param EquipParamWeapon: id BASEWEPID1200: isDragonSlayer: = 0;
+param EquipParamWeapon: id BASEWEPID1200: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID1200: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID1200: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID1200: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID1200: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID1200: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID1200: attackElementCorrectId: = 10000;
 
 (Remember to make sure poison or other speffects existing in the weapon do not get overwritten)
 
@@ -267,39 +270,39 @@ param EquipParamWeapon: id 22181200: attackElementCorrectId: = 10000;
 
 Raw Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22181300: materialSetId: = 1300;
-param EquipParamWeapon: id 22181300: reinforceTypeId: = 1300;
-param EquipParamWeapon: id 22181300: correctType: = 0;
-param EquipParamWeapon: id 22181300: spAttribute: = 1;
-param EquipParamWeapon: id 22181300: baseChangeCategory: = 1;
-param EquipParamWeapon: id 22181300: isDragonSlayer: = 0;
-param EquipParamWeapon: id 22181300: isDeposit: = 1;
-param EquipParamWeapon: id 22181300: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22181300: Unk21: = 0;
-param EquipParamWeapon: id 22181300: Unk22: = 0;
-param EquipParamWeapon: id 22181300: Unk23: = 0;
-param EquipParamWeapon: id 22181300: Unk26: = 0;
-param EquipParamWeapon: id 22181300: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID1300: materialSetId: = 1300;
+param EquipParamWeapon: id BASEWEPID1300: reinforceTypeId: = 1300;
+param EquipParamWeapon: id BASEWEPID1300: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID1300: spAttribute: = 1;
+param EquipParamWeapon: id BASEWEPID1300: baseChangeCategory: = 1;
+param EquipParamWeapon: id BASEWEPID1300: isDragonSlayer: = 0;
+param EquipParamWeapon: id BASEWEPID1300: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID1300: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID1300: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID1300: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID1300: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID1300: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID1300: attackElementCorrectId: = 10000;
 
 ---------------------------------------------------------------------------------------------------------
 
 Blessed Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22181400: corretFaith: = FAITHSCALE;
-param EquipParamWeapon: id 22181400: residentSpEffectId2: = 129001400;
-param EquipParamWeapon: id 22181400: materialSetId: = 1400;
-param EquipParamWeapon: id 22181400: reinforceTypeId: = 1400;
-param EquipParamWeapon: id 22181400: correctType: = 0;
-param EquipParamWeapon: id 22181400: spAttribute: = 1;
-param EquipParamWeapon: id 22181400: baseChangeCategory: = 0;
-param EquipParamWeapon: id 22181400: isDragonSlayer: = 1;
-param EquipParamWeapon: id 22181400: isDeposit: = 1;
-param EquipParamWeapon: id 22181400: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22181400: Unk21: = 0;
-param EquipParamWeapon: id 22181400: Unk22: = 0;
-param EquipParamWeapon: id 22181400: Unk23: = 0;
-param EquipParamWeapon: id 22181400: Unk26: = 0;
-param EquipParamWeapon: id 22181400: attackElementCorrectId: = 10014;
+param EquipParamWeapon: id BASEWEPID1400: corretFaith: = FAITHSCALE;
+param EquipParamWeapon: id BASEWEPID1400: residentSpEffectId2: = 129001400;
+param EquipParamWeapon: id BASEWEPID1400: materialSetId: = 1400;
+param EquipParamWeapon: id BASEWEPID1400: reinforceTypeId: = 1400;
+param EquipParamWeapon: id BASEWEPID1400: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID1400: spAttribute: = 1;
+param EquipParamWeapon: id BASEWEPID1400: baseChangeCategory: = 0;
+param EquipParamWeapon: id BASEWEPID1400: isDragonSlayer: = 1;
+param EquipParamWeapon: id BASEWEPID1400: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID1400: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID1400: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID1400: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID1400: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID1400: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID1400: attackElementCorrectId: = 10014;
 
 (Remember to make sure bleed, poison or other speffects existing in the weapon do not get overwritten)
 
@@ -307,20 +310,20 @@ param EquipParamWeapon: id 22181400: attackElementCorrectId: = 10014;
 
 Hollow Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22181500: residentSpEffectId1: = 129000015;
-param EquipParamWeapon: id 22181500: residentSpEffectId2: = 129001500;
-param EquipParamWeapon: id 22181500: materialSetId: = 1500;
-param EquipParamWeapon: id 22181500: reinforceTypeId: = 1500;
-param EquipParamWeapon: id 22181500: correctType: = 0;
-param EquipParamWeapon: id 22181500: spAttribute: = 1;
-param EquipParamWeapon: id 22181500: baseChangeCategory: = 1;
-param EquipParamWeapon: id 22181500: isDragonSlayer: = 1;
-param EquipParamWeapon: id 22181500: isDeposit: = 1;
-param EquipParamWeapon: id 22181500: disableMultiDropShare: = 1;
-param EquipParamWeapon: id 22181500: Unk21: = 0;
-param EquipParamWeapon: id 22181500: Unk22: = 0;
-param EquipParamWeapon: id 22181500: Unk23: = 0;
-param EquipParamWeapon: id 22181500: Unk26: = 0;
-param EquipParamWeapon: id 22181500: attackElementCorrectId: = 10015;
+param EquipParamWeapon: id BASEWEPID1500: residentSpEffectId1: = 129000015;
+param EquipParamWeapon: id BASEWEPID1500: residentSpEffectId2: = 129001500;
+param EquipParamWeapon: id BASEWEPID1500: materialSetId: = 1500;
+param EquipParamWeapon: id BASEWEPID1500: reinforceTypeId: = 1500;
+param EquipParamWeapon: id BASEWEPID1500: correctType: = 0;
+param EquipParamWeapon: id BASEWEPID1500: spAttribute: = 1;
+param EquipParamWeapon: id BASEWEPID1500: baseChangeCategory: = 1;
+param EquipParamWeapon: id BASEWEPID1500: isDragonSlayer: = 1;
+param EquipParamWeapon: id BASEWEPID1500: isDeposit: = 1;
+param EquipParamWeapon: id BASEWEPID1500: disableMultiDropShare: = 1;
+param EquipParamWeapon: id BASEWEPID1500: Unk21: = 0;
+param EquipParamWeapon: id BASEWEPID1500: Unk22: = 0;
+param EquipParamWeapon: id BASEWEPID1500: Unk23: = 0;
+param EquipParamWeapon: id BASEWEPID1500: Unk26: = 0;
+param EquipParamWeapon: id BASEWEPID1500: attackElementCorrectId: = 10015;
 
 (Remember to make sure bleed, poison or other speffects existing in the weapon do not get overwritten)
