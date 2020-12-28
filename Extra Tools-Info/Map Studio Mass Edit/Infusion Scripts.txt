@@ -61,7 +61,7 @@ param EquipParamWeapon: id 22180300: attackElementCorrectId: = 10000;
 
 Simple Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id 22180400: residentSpEffectId0: = 129000500;
+param EquipParamWeapon: id 22180400: residentSpEffectId2: = 129000500;
 param EquipParamWeapon: id 22180400: materialSetId: = 500;
 param EquipParamWeapon: id 22180400: reinforceTypeId: = 500;
 param EquipParamWeapon: id 22180400: correctType: = 8;
