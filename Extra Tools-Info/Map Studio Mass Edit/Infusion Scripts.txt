@@ -154,7 +154,7 @@ param EquipParamWeapon: id BASEWEPID0700: attackElementCorrectId: = 10000;
 
 Lightning Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id BASEWEPID0400: atkBaseThunder: = DAMAGETHUNDER;
+param EquipParamWeapon: id BASEWEPID0800: atkBaseThunder: = DAMAGETHUNDER;
 param EquipParamWeapon: id BASEWEPID0800: corretFaith: = FAITHSCALE;
 param EquipParamWeapon: id BASEWEPID0800: materialSetId: = 800;
 param EquipParamWeapon: id BASEWEPID0800: reinforceTypeId: = 800;
