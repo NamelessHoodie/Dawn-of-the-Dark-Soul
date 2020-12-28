@@ -197,3 +197,46 @@ param EquipParamWeapon: id 22181000: Unk26: = 4;
 param EquipParamWeapon: id 22181000: attackElementCorrectId: = 10000;
 
 (Remember to set atkBaseDark to the same value of atkBasePhysics)
+
+---------------------------------------------------------------------------------------------------------
+
+Poison Gem Infusion Map Studio Mass Edit Script:
+
+param EquipParamWeapon: id 22181100: residentSpEffectId2: = 129001100;
+param EquipParamWeapon: id 22181100: materialSetId: = 1100;
+param EquipParamWeapon: id 22181100: reinforceTypeId: = 1100;
+param EquipParamWeapon: id 22181100: correctType: = 0;
+param EquipParamWeapon: id 22181100: spAttribute: = 1;
+param EquipParamWeapon: id 22181100: baseChangeCategory: = 1;
+param EquipParamWeapon: id 22181100: isDragonSlayer: = 1;
+param EquipParamWeapon: id 22181100: isDeposit: = 0;
+param EquipParamWeapon: id 22181100: disableMultiDropShare: = 1;
+param EquipParamWeapon: id 22181100: Unk21: = 0;
+param EquipParamWeapon: id 22181100: Unk22: = 0;
+param EquipParamWeapon: id 22181100: Unk23: = 0;
+param EquipParamWeapon: id 22181100: Unk26: = 0;
+param EquipParamWeapon: id 22181100: attackElementCorrectId: = 10000;
+
+(Remember to make sure bleed or other speffects existing in the weapon do not get overwritten)
+
+---------------------------------------------------------------------------------------------------------
+
+Bleed Gem Infusion Map Studio Mass Edit Script:
+
+param EquipParamWeapon: id 22181200: residentSpEffectId2: = 129001200;
+param EquipParamWeapon: id 22181200: materialSetId: = 1200;
+param EquipParamWeapon: id 22181200: reinforceTypeId: = 1200;
+param EquipParamWeapon: id 22181200: correctType: = 0;
+param EquipParamWeapon: id 22181200: spAttribute: = 1;
+param EquipParamWeapon: id 22181200: baseChangeCategory: = 0;
+param EquipParamWeapon: id 22181200: isDragonSlayer: = 0;
+param EquipParamWeapon: id 22181200: isDeposit: = 1;
+param EquipParamWeapon: id 22181200: disableMultiDropShare: = 1;
+param EquipParamWeapon: id 22181200: Unk21: = 0;
+param EquipParamWeapon: id 22181200: Unk22: = 0;
+param EquipParamWeapon: id 22181200: Unk23: = 0;
+param EquipParamWeapon: id 22181200: Unk26: = 0;
+param EquipParamWeapon: id 22181200: attackElementCorrectId: = 10000;
+
+(Remember to make sure poison or other speffects existing in the weapon do not get overwritten)
+
