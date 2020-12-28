@@ -14,8 +14,25 @@ DAMAGEFIRE :This is your fire damage, for common usage. This should be set the s
 DAMAGEMAGIC :This is your magic damage, for common usage. This should be set the same as atkBasePhysics
 
 DAMAGETHUNDER :This is your lightning damage, for common usage. This should be set the same as your atkBasePhysics
-
 ---------------------------------------------------------------------------------------------------------
+
+Uninfused - Baseweapon
+
+param EquipParamWeapon: id BASEWEPID0000: materialSetId: = 0;
+param EquipParamWeapon: id BASEWEPID0000: reinforceTypeId: = 0;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0000: originEquipWep10: = BASEWEPID0000;
+
+--------------------------------------------------------------------------------------------------------- 
 
 Heavy Gem Infusion Map Studio Mass Edit Script:
 
@@ -32,6 +49,17 @@ param EquipParamWeapon: id BASEWEPID0100: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0100: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0100: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0100: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -50,6 +78,17 @@ param EquipParamWeapon: id BASEWEPID0200: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0200: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0200: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0200: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -68,6 +107,17 @@ param EquipParamWeapon: id BASEWEPID0300: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0300: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0300: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0300: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -89,6 +139,17 @@ param EquipParamWeapon: id BASEWEPID0400: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0400: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0400: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0400: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -109,6 +170,17 @@ param EquipParamWeapon: id BASEWEPID0500: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0500: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0500: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0500: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -128,6 +200,17 @@ param EquipParamWeapon: id BASEWEPID0600: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0600: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0600: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0600: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -149,6 +232,17 @@ param EquipParamWeapon: id BASEWEPID0700: Unk22: = 4;
 param EquipParamWeapon: id BASEWEPID0700: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0700: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0700: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -169,6 +263,17 @@ param EquipParamWeapon: id BASEWEPID0800: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0800: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0800: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0800: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -188,6 +293,17 @@ param EquipParamWeapon: id BASEWEPID0900: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0900: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0900: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0900: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -209,6 +325,17 @@ param EquipParamWeapon: id BASEWEPID1000: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID1000: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID1000: Unk26: = 4;
 param EquipParamWeapon: id BASEWEPID1000: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -228,6 +355,17 @@ param EquipParamWeapon: id BASEWEPID1100: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID1100: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID1100: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID1100: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: originEquipWep10: = BASEWEPID0000;
 
 (Remember to make sure bleed or other speffects existing in the weapon do not get overwritten)
 
@@ -249,6 +387,17 @@ param EquipParamWeapon: id BASEWEPID1200: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID1200: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID1200: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID1200: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: originEquipWep10: = BASEWEPID0000;
 
 (Remember to make sure poison or other speffects existing in the weapon do not get overwritten)
 
@@ -269,6 +418,17 @@ param EquipParamWeapon: id BASEWEPID1300: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID1300: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID1300: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID1300: attackElementCorrectId: = 10000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: originEquipWep10: = BASEWEPID0000;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -289,6 +449,17 @@ param EquipParamWeapon: id BASEWEPID1400: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID1400: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID1400: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID1400: attackElementCorrectId: = 10014;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: originEquipWep10: = BASEWEPID0000;
 
 (Remember to make sure bleed, poison or other speffects existing in the weapon do not get overwritten)
 
@@ -311,5 +482,16 @@ param EquipParamWeapon: id BASEWEPID1500: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID1500: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID1500: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID1500: attackElementCorrectId: = 10015;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep0: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep1: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep2: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep3: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep4: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep5: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep6: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep7: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep8: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep9: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: originEquipWep10: = BASEWEPID0000;
 
 (Remember to make sure bleed, poison or other speffects existing in the weapon do not get overwritten)
