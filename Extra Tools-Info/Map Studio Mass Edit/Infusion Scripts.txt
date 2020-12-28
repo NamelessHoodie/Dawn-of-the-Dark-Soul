@@ -179,3 +179,21 @@ param EquipParamWeapon: id 22180900: attackElementCorrectId: = 10000;
 (Remember to set atkBaseDark to the same value of atkBasePhysics)
 
 ---------------------------------------------------------------------------------------------------------
+
+Dark Gem Infusion Map Studio Mass Edit Script:
+
+param EquipParamWeapon: id 22181000: materialSetId: = 1000;
+param EquipParamWeapon: id 22181000: reinforceTypeId: = 1000;
+param EquipParamWeapon: id 22181000: correctType: = 0;
+param EquipParamWeapon: id 22181000: spAttribute: = 9;
+param EquipParamWeapon: id 22181000: baseChangeCategory: = 0;
+param EquipParamWeapon: id 22181000: isDragonSlayer: = 1;
+param EquipParamWeapon: id 22181000: isDeposit: = 0;
+param EquipParamWeapon: id 22181000: disableMultiDropShare: = 1;
+param EquipParamWeapon: id 22181000: Unk21: = 0;
+param EquipParamWeapon: id 22181000: Unk22: = 0;
+param EquipParamWeapon: id 22181000: Unk23: = 0;
+param EquipParamWeapon: id 22181000: Unk26: = 4;
+param EquipParamWeapon: id 22181000: attackElementCorrectId: = 10000;
+
+(Remember to set atkBaseDark to the same value of atkBasePhysics)
