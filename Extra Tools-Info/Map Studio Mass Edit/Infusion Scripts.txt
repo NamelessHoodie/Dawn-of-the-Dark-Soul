@@ -277,6 +277,8 @@ param EquipParamWeapon: id 22181400: Unk23: = 0;
 param EquipParamWeapon: id 22181400: Unk26: = 0;
 param EquipParamWeapon: id 22181400: attackElementCorrectId: = 10014;
 
+(Remember to make sure bleed, poison or other speffects existing in the weapon do not get overwritten)
+
 ---------------------------------------------------------------------------------------------------------
 
 Hollow Gem Infusion Map Studio Mass Edit Script:
