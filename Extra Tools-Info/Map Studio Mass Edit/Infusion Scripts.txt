@@ -1,7 +1,16 @@
-Preinfusion scripts:
+Before using this script, search and replace the following "variables" with your desired parameters 
 
-param EquipParamWeapon: id 2218\d\d\d\d: corretMagic: = 90;
-param EquipParamWeapon: id 2218\d\d\d\d: corretFaith: = 90;
+INTSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITHSCALE should be set to the same value.
+
+FAITHSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITHSCALE should be set to the same value.
+
+DAMAGEDARK :This is your dark damage, for common usage. This should be set the same as your physical damage
+
+DAMAGEFIRE :This is your fire damage, for common usage. This should be set the same as your physical damage
+
+DAMAGEMAGIC :This is your magic damage, for common usage. This should be set the same as your physical damage
+
+DAMAGETHUNDER :This is your lightning damage, for common usage. This should be set the same as your physical damage
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -61,6 +70,8 @@ param EquipParamWeapon: id 22180300: attackElementCorrectId: = 10000;
 
 Simple Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id 22180400: atkBaseMagic: = DAMAGEMAGIC;
+param EquipParamWeapon: id 22180400: corretMagic: = INTSCALE;
 param EquipParamWeapon: id 22180400: residentSpEffectId2: = 129000500;
 param EquipParamWeapon: id 22180400: materialSetId: = 500;
 param EquipParamWeapon: id 22180400: reinforceTypeId: = 500;
@@ -82,6 +93,8 @@ param EquipParamWeapon: id 22180400: attackElementCorrectId: = 10000;
 
 Crystal Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id 22180500: atkBaseMagic: = DAMAGEMAGIC;
+param EquipParamWeapon: id 22180500: corretMagic: = INTSCALE;
 param EquipParamWeapon: id 22180500: materialSetId: = 400;
 param EquipParamWeapon: id 22180500: reinforceTypeId: = 400;
 param EquipParamWeapon: id 22180500: correctType: = 8;
@@ -102,6 +115,7 @@ param EquipParamWeapon: id 22180500: attackElementCorrectId: = 10000;
 
 Fire Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id 22180600: atkBaseFire: = DAMAGEFIRE;
 param EquipParamWeapon: id 22180600: materialSetId: = 600;
 param EquipParamWeapon: id 22180600: reinforceTypeId: = 600;
 param EquipParamWeapon: id 22180600: correctType: = 0;
@@ -122,6 +136,9 @@ param EquipParamWeapon: id 22180600: attackElementCorrectId: = 10000;
 
 Chaos Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id 22180700: atkBaseFire: = DAMAGEFIRE;
+param EquipParamWeapon: id 22180700: corretMagic: = INTSCALE;
+param EquipParamWeapon: id 22180700: corretFaith: = FAITHSCALE;
 param EquipParamWeapon: id 22180700: materialSetId: = 700;
 param EquipParamWeapon: id 22180700: reinforceTypeId: = 700;
 param EquipParamWeapon: id 22180700: correctType: = 0;
@@ -142,6 +159,8 @@ param EquipParamWeapon: id 22180700: attackElementCorrectId: = 10000;
 
 Lightning Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id 22180400: atkBaseThunder: = DAMAGETHUNDER;
+param EquipParamWeapon: id 22180800: corretFaith: = FAITHSCALE;
 param EquipParamWeapon: id 22180800: materialSetId: = 800;
 param EquipParamWeapon: id 22180800: reinforceTypeId: = 800;
 param EquipParamWeapon: id 22180800: correctType: = 0;
@@ -162,6 +181,7 @@ param EquipParamWeapon: id 22180800: attackElementCorrectId: = 10000;
 
 Deep Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id 22180900: atkBaseDark: = DAMAGEDARK;
 param EquipParamWeapon: id 22180900: materialSetId: = 900;
 param EquipParamWeapon: id 22180900: reinforceTypeId: = 900;
 param EquipParamWeapon: id 22180900: correctType: = 0;
@@ -182,6 +202,9 @@ param EquipParamWeapon: id 22180900: attackElementCorrectId: = 10000;
 
 Dark Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id 22181000: atkBaseDark: = DAMAGEDARK;
+param EquipParamWeapon: id 22181000: corretMagic: = INTSCALE;
+param EquipParamWeapon: id 22181000: corretFaith: = FAITHSCALE;
 param EquipParamWeapon: id 22181000: materialSetId: = 1000;
 param EquipParamWeapon: id 22181000: reinforceTypeId: = 1000;
 param EquipParamWeapon: id 22181000: correctType: = 0;
@@ -262,6 +285,7 @@ param EquipParamWeapon: id 22181300: attackElementCorrectId: = 10000;
 
 Blessed Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id 22181400: corretFaith: = FAITHSCALE;
 param EquipParamWeapon: id 22181400: residentSpEffectId2: = 129001400;
 param EquipParamWeapon: id 22181400: materialSetId: = 1400;
 param EquipParamWeapon: id 22181400: reinforceTypeId: = 1400;
