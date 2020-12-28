@@ -7,13 +7,13 @@ INTSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITH
 
 FAITHSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITHSCALE should be set to the same value.
 
-DAMAGEDARK :This is your dark damage, for common usage. This should be set the same as your physical damage
+DAMAGEDARK :This is your dark damage, for common usage. This should be set the same as atkBasePhysics
 
-DAMAGEFIRE :This is your fire damage, for common usage. This should be set the same as your physical damage
+DAMAGEFIRE :This is your fire damage, for common usage. This should be set the same as atkBasePhysics
 
-DAMAGEMAGIC :This is your magic damage, for common usage. This should be set the same as your physical damage
+DAMAGEMAGIC :This is your magic damage, for common usage. This should be set the same as atkBasePhysics
 
-DAMAGETHUNDER :This is your lightning damage, for common usage. This should be set the same as your physical damage
+DAMAGETHUNDER :This is your lightning damage, for common usage. This should be set the same as your atkBasePhysics
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -90,8 +90,6 @@ param EquipParamWeapon: id BASEWEPID0400: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0400: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0400: attackElementCorrectId: = 10000;
 
-(Remember to set atkBaseMagic to the same value of atkBasePhysics)
-
 ---------------------------------------------------------------------------------------------------------
 
 Crystal Gem Infusion Map Studio Mass Edit Script:
@@ -112,8 +110,6 @@ param EquipParamWeapon: id BASEWEPID0500: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0500: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0500: attackElementCorrectId: = 10000;
 
-(Remember to set atkBaseMagic to the same value of atkBasePhysics)
-
 ---------------------------------------------------------------------------------------------------------
 
 Fire Gem Infusion Map Studio Mass Edit Script:
@@ -132,8 +128,6 @@ param EquipParamWeapon: id BASEWEPID0600: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0600: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0600: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0600: attackElementCorrectId: = 10000;
-
-(Remember to set atkBaseFire to the same value of atkBasePhysics)
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -156,8 +150,6 @@ param EquipParamWeapon: id BASEWEPID0700: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0700: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0700: attackElementCorrectId: = 10000;
 
-(Remember to set atkBaseFire to the same value of atkBasePhysics)
-
 ---------------------------------------------------------------------------------------------------------
 
 Lightning Gem Infusion Map Studio Mass Edit Script:
@@ -178,8 +170,6 @@ param EquipParamWeapon: id BASEWEPID0800: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0800: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0800: attackElementCorrectId: = 10000;
 
-(Remember to set atkBaseThunder to the same value of atkBasePhysics)
-
 ---------------------------------------------------------------------------------------------------------
 
 Deep Gem Infusion Map Studio Mass Edit Script:
@@ -198,8 +188,6 @@ param EquipParamWeapon: id BASEWEPID0900: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID0900: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID0900: Unk26: = 0;
 param EquipParamWeapon: id BASEWEPID0900: attackElementCorrectId: = 10000;
-
-(Remember to set atkBaseDark to the same value of atkBasePhysics)
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -221,8 +209,6 @@ param EquipParamWeapon: id BASEWEPID1000: Unk22: = 0;
 param EquipParamWeapon: id BASEWEPID1000: Unk23: = 0;
 param EquipParamWeapon: id BASEWEPID1000: Unk26: = 4;
 param EquipParamWeapon: id BASEWEPID1000: attackElementCorrectId: = 10000;
-
-(Remember to set atkBaseDark to the same value of atkBasePhysics)
 
 ---------------------------------------------------------------------------------------------------------
 
