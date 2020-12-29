@@ -206,6 +206,7 @@ param EquipParamWeapon: id BASEWEPID0500: originEquipWep10: = BASEWEPID0000;
 
 Fire Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID0600: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID0600: sortId: = SORTBASEID07;
 param EquipParamWeapon: id BASEWEPID0600: atkBaseFire: = DAMAGEFIRE;
 param EquipParamWeapon: id BASEWEPID0600: materialSetId: = 600;
@@ -304,6 +305,7 @@ param EquipParamWeapon: id BASEWEPID0800: originEquipWep10: = BASEWEPID0000;
 
 Deep Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID0900: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID0900: sortId: = SORTBASEID11;
 param EquipParamWeapon: id BASEWEPID0900: atkBaseDark: = DAMAGEDARK;
 param EquipParamWeapon: id BASEWEPID0900: materialSetId: = 900;
@@ -435,6 +437,7 @@ param EquipParamWeapon: id BASEWEPID1200: originEquipWep10: = BASEWEPID0000;
 
 Raw Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID1300: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID1300: sortId: = SORTBASEID04;
 param EquipParamWeapon: id BASEWEPID1300: materialSetId: = 1300;
 param EquipParamWeapon: id BASEWEPID1300: reinforceTypeId: = 1300;
