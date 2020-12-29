@@ -1,3 +1,11 @@
+Useful regular expression search arguments.
+
+To search all infusion damage types: ELEMPHYSDAMAGE|DAMAGEDARK|DAMAGEFIRE|DAMAGEMAGIC|DAMAGETHUNDER
+
+To search all elemental scaling types: INTSCALE|FAITHSCALE
+
+---------------------------------------------------------------------------------------------------------
+
 Before using this script, search and replace the following "variables" with your desired parameters 
 
 SORTBASEID :This is your weapon's base sort ID, it is achieved by removing the last 2 digits from the main weapon's sort ID
