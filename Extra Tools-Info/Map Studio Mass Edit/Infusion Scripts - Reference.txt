@@ -10,13 +10,15 @@ INTSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITH
 
 FAITHSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITHSCALE should be set to the same value.
 
-DAMAGEDARK :This is your dark damage, for common usage. This should be set the same as atkBasePhysics
+ELEMPHYSDAMAGE :This is your physical damage to be used on elemental infusions, physical infusions except blessed will keep their original damage
 
-DAMAGEFIRE :This is your fire damage, for common usage. This should be set the same as atkBasePhysics
+DAMAGEDARK :This is your dark damage, for common usage. This should be set the same as ELEMPHYSDAMAGE
 
-DAMAGEMAGIC :This is your magic damage, for common usage. This should be set the same as atkBasePhysics
+DAMAGEFIRE :This is your fire damage, for common usage. This should be set the same as ELEMPHYSDAMAGE
 
-DAMAGETHUNDER :This is your lightning damage, for common usage. This should be set the same as your atkBasePhysics
+DAMAGEMAGIC :This is your magic damage, for common usage. This should be set the same as ELEMPHYSDAMAGE
+
+DAMAGETHUNDER :This is your lightning damage, for common usage. This should be set the same as your ELEMPHYSDAMAGE
 ---------------------------------------------------------------------------------------------------------
 
 Uninfused - Baseweapon
@@ -129,6 +131,7 @@ param EquipParamWeapon: id BASEWEPID0300: originEquipWep10: = BASEWEPID0000;
 
 Simple Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID0400: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID0400: sortId: = SORTBASEID06;
 param EquipParamWeapon: id BASEWEPID0400: atkBaseMagic: = DAMAGEMAGIC;
 param EquipParamWeapon: id BASEWEPID0400: corretMagic: = INTSCALE;
@@ -162,6 +165,7 @@ param EquipParamWeapon: id BASEWEPID0400: originEquipWep10: = BASEWEPID0000;
 
 Crystal Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID0500: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID0500: sortId: = SORTBASEID05;
 param EquipParamWeapon: id BASEWEPID0500: atkBaseMagic: = DAMAGEMAGIC;
 param EquipParamWeapon: id BASEWEPID0500: corretMagic: = INTSCALE;
@@ -225,6 +229,7 @@ param EquipParamWeapon: id BASEWEPID0600: originEquipWep10: = BASEWEPID0000;
 
 Chaos Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID0700: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID0700: sortId: = SORTBASEID08;
 param EquipParamWeapon: id BASEWEPID0700: atkBaseFire: = DAMAGEFIRE;
 param EquipParamWeapon: id BASEWEPID0700: corretMagic: = INTSCALE;
@@ -258,6 +263,7 @@ param EquipParamWeapon: id BASEWEPID0700: originEquipWep10: = BASEWEPID0000;
 
 Lightning Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID0800: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID0800: sortId: = SORTBASEID09;
 param EquipParamWeapon: id BASEWEPID0800: atkBaseThunder: = DAMAGETHUNDER;
 param EquipParamWeapon: id BASEWEPID0800: corretFaith: = FAITHSCALE;
@@ -321,6 +327,7 @@ param EquipParamWeapon: id BASEWEPID0900: originEquipWep10: = BASEWEPID0000;
 
 Dark Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID1000: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID1000: sortId: = SORTBASEID12;
 param EquipParamWeapon: id BASEWEPID1000: atkBaseDark: = DAMAGEDARK;
 param EquipParamWeapon: id BASEWEPID1000: corretMagic: = INTSCALE;
@@ -450,6 +457,7 @@ param EquipParamWeapon: id BASEWEPID1300: originEquipWep10: = BASEWEPID0000;
 
 Blessed Gem Infusion Map Studio Mass Edit Script:
 
+param EquipParamWeapon: id BASEWEPID1400: atkBasePhysics: = ELEMPHYSDAMAGE;
 param EquipParamWeapon: id BASEWEPID1400: sortId: = SORTBASEID10;
 param EquipParamWeapon: id BASEWEPID1400: corretFaith: = FAITHSCALE;
 param EquipParamWeapon: id BASEWEPID1400: residentSpEffectId2: = 129001400;
