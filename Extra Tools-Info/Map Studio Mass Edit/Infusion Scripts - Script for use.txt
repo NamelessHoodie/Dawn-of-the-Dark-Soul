@@ -1,4 +1,15 @@
+Useful regular expression search arguments.
+
+To search all infusion damage types: ELEMPHYSDAMAGE|DAMAGEDARK|DAMAGEFIRE|DAMAGEMAGIC|DAMAGETHUNDER
+
+To search all elemental scaling types: INTSCALE|FAITHSCALE
+
+---------------------------------------------------------------------------------------------------------
+
 Before using this script, search and replace the following "variables" with your desired parameters 
+
+SORTBASEID :This is your weapon's base sort ID, it is achieved by removing the last 2 digits from the main weapon's sort ID
+           :Example, if your sortId is 50400 then your SORTBASEID would be 504
 
 BASEWEPID :This is your weapon's base ID. You will find it by removing 4 digits from the end of your EquipParamWeapon row ID. 
           :Example, if your row ID is 22180000 then your BASEWEPID will be 2218
@@ -7,13 +18,15 @@ INTSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITH
 
 FAITHSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITHSCALE should be set to the same value.
 
-DAMAGEDARK :This is your dark damage, for common usage. This should be set the same as atkBasePhysics
+ELEMPHYSDAMAGE :This is your physical damage to be used on elemental infusions, physical infusions except blessed will keep their original damage
 
-DAMAGEFIRE :This is your fire damage, for common usage. This should be set the same as atkBasePhysics
+DAMAGEDARK :This is your dark damage, for common usage. This should be set the same as ELEMPHYSDAMAGE
 
-DAMAGEMAGIC :This is your magic damage, for common usage. This should be set the same as atkBasePhysics
+DAMAGEFIRE :This is your fire damage, for common usage. This should be set the same as ELEMPHYSDAMAGE
 
-DAMAGETHUNDER :This is your lightning damage, for common usage. This should be set the same as your atkBasePhysics
+DAMAGEMAGIC :This is your magic damage, for common usage. This should be set the same as ELEMPHYSDAMAGE
+
+DAMAGETHUNDER :This is your lightning damage, for common usage. This should be set the same as your ELEMPHYSDAMAGE
 ---------------------------------------------------------------------------------------------------------
 
 param EquipParamWeapon: id BASEWEPID0000: materialSetId: = 0;
@@ -29,6 +42,7 @@ param EquipParamWeapon: id BASEWEPID0000: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0000: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0000: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0000: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0100: sortId: = SORTBASEID01;
 param EquipParamWeapon: id BASEWEPID0100: materialSetId: = 200;
 param EquipParamWeapon: id BASEWEPID0100: reinforceTypeId: = 100;
 param EquipParamWeapon: id BASEWEPID0100: correctType: = 1;
@@ -53,6 +67,7 @@ param EquipParamWeapon: id BASEWEPID0100: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0100: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0100: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0100: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0200: sortId: = SORTBASEID02;
 param EquipParamWeapon: id BASEWEPID0200: materialSetId: = 100;
 param EquipParamWeapon: id BASEWEPID0200: reinforceTypeId: = 5000;
 param EquipParamWeapon: id BASEWEPID0200: correctType: = 9;
@@ -77,6 +92,7 @@ param EquipParamWeapon: id BASEWEPID0200: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0200: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0200: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0200: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0300: sortId: = SORTBASEID03;
 param EquipParamWeapon: id BASEWEPID0300: materialSetId: = 300;
 param EquipParamWeapon: id BASEWEPID0300: reinforceTypeId: = 300;
 param EquipParamWeapon: id BASEWEPID0300: correctType: = 8;
@@ -101,6 +117,8 @@ param EquipParamWeapon: id BASEWEPID0300: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0300: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0300: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0300: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0400: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID0400: sortId: = SORTBASEID06;
 param EquipParamWeapon: id BASEWEPID0400: atkBaseMagic: = DAMAGEMAGIC;
 param EquipParamWeapon: id BASEWEPID0400: corretMagic: = INTSCALE;
 param EquipParamWeapon: id BASEWEPID0400: residentSpEffectId2: = 129000500;
@@ -128,6 +146,8 @@ param EquipParamWeapon: id BASEWEPID0400: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0400: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0400: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0400: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0500: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID0500: sortId: = SORTBASEID05;
 param EquipParamWeapon: id BASEWEPID0500: atkBaseMagic: = DAMAGEMAGIC;
 param EquipParamWeapon: id BASEWEPID0500: corretMagic: = INTSCALE;
 param EquipParamWeapon: id BASEWEPID0500: materialSetId: = 400;
@@ -154,6 +174,7 @@ param EquipParamWeapon: id BASEWEPID0500: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0500: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0500: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0500: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0600: sortId: = SORTBASEID07;
 param EquipParamWeapon: id BASEWEPID0600: atkBaseFire: = DAMAGEFIRE;
 param EquipParamWeapon: id BASEWEPID0600: materialSetId: = 600;
 param EquipParamWeapon: id BASEWEPID0600: reinforceTypeId: = 600;
@@ -179,6 +200,8 @@ param EquipParamWeapon: id BASEWEPID0600: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0600: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0600: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0600: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0700: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID0700: sortId: = SORTBASEID08;
 param EquipParamWeapon: id BASEWEPID0700: atkBaseFire: = DAMAGEFIRE;
 param EquipParamWeapon: id BASEWEPID0700: corretMagic: = INTSCALE;
 param EquipParamWeapon: id BASEWEPID0700: corretFaith: = FAITHSCALE;
@@ -206,6 +229,8 @@ param EquipParamWeapon: id BASEWEPID0700: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0700: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0700: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0700: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0800: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID0800: sortId: = SORTBASEID09;
 param EquipParamWeapon: id BASEWEPID0800: atkBaseThunder: = DAMAGETHUNDER;
 param EquipParamWeapon: id BASEWEPID0800: corretFaith: = FAITHSCALE;
 param EquipParamWeapon: id BASEWEPID0800: materialSetId: = 800;
@@ -232,6 +257,7 @@ param EquipParamWeapon: id BASEWEPID0800: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0800: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0800: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0800: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID0900: sortId: = SORTBASEID11;
 param EquipParamWeapon: id BASEWEPID0900: atkBaseDark: = DAMAGEDARK;
 param EquipParamWeapon: id BASEWEPID0900: materialSetId: = 900;
 param EquipParamWeapon: id BASEWEPID0900: reinforceTypeId: = 900;
@@ -257,6 +283,8 @@ param EquipParamWeapon: id BASEWEPID0900: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0900: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0900: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0900: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1000: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID1000: sortId: = SORTBASEID12;
 param EquipParamWeapon: id BASEWEPID1000: atkBaseDark: = DAMAGEDARK;
 param EquipParamWeapon: id BASEWEPID1000: corretMagic: = INTSCALE;
 param EquipParamWeapon: id BASEWEPID1000: corretFaith: = FAITHSCALE;
@@ -284,6 +312,7 @@ param EquipParamWeapon: id BASEWEPID1000: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1000: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1000: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1000: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1100: sortId: = SORTBASEID14;
 param EquipParamWeapon: id BASEWEPID1100: spEffectBehaviorId2: = 129001100;
 param EquipParamWeapon: id BASEWEPID1100: materialSetId: = 1100;
 param EquipParamWeapon: id BASEWEPID1100: reinforceTypeId: = 1100;
@@ -309,6 +338,7 @@ param EquipParamWeapon: id BASEWEPID1100: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1100: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1100: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1100: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1200: sortId: = SORTBASEID13;
 param EquipParamWeapon: id BASEWEPID1200: spEffectBehaviorId2: = 129001200;
 param EquipParamWeapon: id BASEWEPID1200: materialSetId: = 1200;
 param EquipParamWeapon: id BASEWEPID1200: reinforceTypeId: = 1200;
@@ -334,6 +364,7 @@ param EquipParamWeapon: id BASEWEPID1200: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1200: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1200: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1200: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1300: sortId: = SORTBASEID04;
 param EquipParamWeapon: id BASEWEPID1300: materialSetId: = 1300;
 param EquipParamWeapon: id BASEWEPID1300: reinforceTypeId: = 1300;
 param EquipParamWeapon: id BASEWEPID1300: correctType: = 0;
@@ -358,6 +389,8 @@ param EquipParamWeapon: id BASEWEPID1300: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1300: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1300: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1300: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1400: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID1400: sortId: = SORTBASEID10;
 param EquipParamWeapon: id BASEWEPID1400: corretFaith: = FAITHSCALE;
 param EquipParamWeapon: id BASEWEPID1400: residentSpEffectId2: = 129001400;
 param EquipParamWeapon: id BASEWEPID1400: materialSetId: = 1400;
@@ -384,6 +417,7 @@ param EquipParamWeapon: id BASEWEPID1400: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1400: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1400: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1400: originEquipWep10: = BASEWEPID0000;
+param EquipParamWeapon: id BASEWEPID1500: sortId: = SORTBASEID15;
 param EquipParamWeapon: id BASEWEPID1500: residentSpEffectId1: = 129000015;
 param EquipParamWeapon: id BASEWEPID1500: residentSpEffectId2: = 129001500;
 param EquipParamWeapon: id BASEWEPID1500: materialSetId: = 1500;
