@@ -233,8 +233,6 @@ param EquipParamWeapon: id BASEWEPID0600: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0600: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0600: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0600: originEquipWep10: = BASEWEPID0000;
-param EquipParamWeapon: id BASEWEPID0600: atkBasePhysics: * 1.1;
-param EquipParamWeapon: id BASEWEPID0600: atkBaseFire: * 1.1;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -334,8 +332,6 @@ param EquipParamWeapon: id BASEWEPID0900: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0900: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0900: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID0900: originEquipWep10: = BASEWEPID0000;
-param EquipParamWeapon: id BASEWEPID0900: atkBasePhysics: * 1.1;
-param EquipParamWeapon: id BASEWEPID0900: atkBaseDark: * 1.1;
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -467,7 +463,6 @@ param EquipParamWeapon: id BASEWEPID1300: originEquipWep7: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1300: originEquipWep8: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1300: originEquipWep9: = BASEWEPID0000;
 param EquipParamWeapon: id BASEWEPID1300: originEquipWep10: = BASEWEPID0000;
-param EquipParamWeapon: id BASEWEPID1300: atkBasePhysics: * 1.1;
 
 ---------------------------------------------------------------------------------------------------------
 
