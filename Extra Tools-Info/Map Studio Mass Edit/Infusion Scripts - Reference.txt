@@ -18,6 +18,8 @@ INTSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITH
 
 FAITHSCALE :This is your intelligence scaling, for common usage INTSCALE and FAITHSCALE should be set to the same value.
 
+RAWDAMAGE :This is the base damage that will applied to fire, physical and dark in raw, fire and deep infusions.
+
 ELEMPHYSDAMAGE :This is your physical damage to be used on elemental infusions, physical infusions except blessed will keep their original damage
 
 DAMAGEDARK :This is your dark damage, for common usage. This should be set the same as ELEMPHYSDAMAGE
@@ -206,9 +208,9 @@ param EquipParamWeapon: id BASEWEPID0500: originEquipWep10: = BASEWEPID0000;
 
 Fire Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id BASEWEPID0600: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID0600: atkBasePhysics: = RAWDAMAGE;
 param EquipParamWeapon: id BASEWEPID0600: sortId: = SORTBASEID07;
-param EquipParamWeapon: id BASEWEPID0600: atkBaseFire: = DAMAGEFIRE;
+param EquipParamWeapon: id BASEWEPID0600: atkBaseFire: = RAWDAMAGE;
 param EquipParamWeapon: id BASEWEPID0600: materialSetId: = 600;
 param EquipParamWeapon: id BASEWEPID0600: reinforceTypeId: = 600;
 param EquipParamWeapon: id BASEWEPID0600: correctType: = 0;
@@ -305,9 +307,9 @@ param EquipParamWeapon: id BASEWEPID0800: originEquipWep10: = BASEWEPID0000;
 
 Deep Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id BASEWEPID0900: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID0900: atkBasePhysics: = RAWDAMAGE;
 param EquipParamWeapon: id BASEWEPID0900: sortId: = SORTBASEID11;
-param EquipParamWeapon: id BASEWEPID0900: atkBaseDark: = DAMAGEDARK;
+param EquipParamWeapon: id BASEWEPID0900: atkBaseDark: = RAWDAMAGE;
 param EquipParamWeapon: id BASEWEPID0900: materialSetId: = 900;
 param EquipParamWeapon: id BASEWEPID0900: reinforceTypeId: = 900;
 param EquipParamWeapon: id BASEWEPID0900: correctType: = 0;
@@ -437,7 +439,7 @@ param EquipParamWeapon: id BASEWEPID1200: originEquipWep10: = BASEWEPID0000;
 
 Raw Gem Infusion Map Studio Mass Edit Script:
 
-param EquipParamWeapon: id BASEWEPID1300: atkBasePhysics: = ELEMPHYSDAMAGE;
+param EquipParamWeapon: id BASEWEPID1300: atkBasePhysics: = RAWDAMAGE;
 param EquipParamWeapon: id BASEWEPID1300: sortId: = SORTBASEID04;
 param EquipParamWeapon: id BASEWEPID1300: materialSetId: = 1300;
 param EquipParamWeapon: id BASEWEPID1300: reinforceTypeId: = 1300;
