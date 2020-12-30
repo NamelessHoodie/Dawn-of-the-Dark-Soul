@@ -6361,7 +6361,14 @@ function BackStep_onActivate()
 end
 
 function BackStep_onUpdate()
-    if EvasionCommonFunction(FALL_TYPE_DEFAULT, "W_AttackRightLightDash", "W_AttackRightHeavy1Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothDash", "W_AttackBothHeavy1Start") == TRUE then
+    local r2 = "W_AttackRightHeavy1Start"
+    local b2 = "W_AttackBothHeavy1Start"
+    -- Leap Attack After Rolling
+    if 0 == 0 then
+        r2 = "W_AttackRightHeavyKick"
+        b2 = "W_AttackBothHeavyKick"
+    end
+    if EvasionCommonFunction(FALL_TYPE_DEFAULT, "W_AttackRightLightDash", r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothDash", b2) == TRUE then
         return 
     else
         return 
