@@ -3299,7 +3299,7 @@ function isOffHandCombo()
         return FALSE
     -- DW - Dual Rapier Combo - Rapiers - Special 
     elseif is_L_Rapier == TRUE and is_R_Rapier == TRUE then
-        if Lsp_kind ~= 237 and Rsp_kind ~= 237 then
+        if Rsp_kind ~= 237 then
             return DWRapier
         end
     else
