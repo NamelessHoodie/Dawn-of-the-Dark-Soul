@@ -3246,7 +3246,7 @@ function isTrickWeapon()
         hand = HAND_LEFT
     end
     local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
-    if sp_kind == 268 or sp_kind == 147 then
+    if sp_kind == 268 or sp_kind == 601 then
         return TRUE 
     else
         return FALSE
@@ -3261,7 +3261,7 @@ function is2HTrickWeapon()
         hand = HAND_LEFT
     end
     local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
-    if sp_kind == 601 or sp_kind == 147 then
+    if sp_kind == 147 then
         return TRUE
     else
         return FALSE
@@ -3271,16 +3271,17 @@ end
 function isExtended1HR1()
     -- Trick - Is more than 3 1H R1
     SawCleaver = "SawCleaver"
+    ThreadedCane = "ThreadedCane"
     local style = c_Style
     local hand = HAND_RIGHT
     if style == HAND_LEFT_BOTH then
         hand = HAND_LEFT
     end
     local sp_kind = env("装備武器特殊カテゴリ番号取得", hand)
-    if sp_kind == 267 then
-        return 1
-    elseif sp_kind == 268 then
+    if sp_kind == 268 then
         return SawCleaver
+    elseif sp_kind == 601 then
+        return ThreadedCane
     else
         return nil
     end
@@ -6293,6 +6294,8 @@ function Rolling_onUpdate()
     if isExtended1HR1() == SawCleaver then
         r2 = "W_AttackRightHeavy1SubStart"
         b2 = "W_AttackBothHeavy1SubStart"
+    elseif isExtended1HR1() == ThreadedCane then
+        r2 = "W_AttackRightHeavy1SubStart"
     elseif sp_kind == 161 then
         b2 = "W_AttackBothHeavy1Start"
         r2 = "W_AttackRightHeavy1Start"
@@ -6340,6 +6343,8 @@ function RollingSelftrans_onUpdate()
     if isExtended1HR1() == SawCleaver then
         r2 = "W_AttackRightHeavy1SubStart"
         b2 = "W_AttackBothHeavy1SubStart"
+    elseif isExtended1HR1() == ThreadedCane then
+        r2 = "W_AttackRightHeavy1SubStart"
     elseif sp_kind == 161 then
         b2 = "W_AttackBothHeavy1Start"
         r2 = "W_AttackRightHeavy1Start"
@@ -7243,13 +7248,15 @@ function AttackRightHeavy1SubStart_onUpdate() -- >30330
     end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
         return
-    -- Trick - 4 Stage heavy attack - Transition 
-    elseif env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
-        ExecEventAllBody("W_AttackRightHeavy1End")
-        return
-    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
-        ExecEventAllBody("W_AttackRightHeavySpecial1Start")
-        return
+    -- Trick - 4 Stage heavy attack - Transition
+    elseif isExtended1HR1() == SawCleaver or ThreadedCane then
+        if env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
+            ExecEventAllBody("W_AttackRightHeavy1End")
+            return
+        elseif env(1116, 100974) == TRUE then
+            ExecEventAllBody("W_AttackRightHeavySpecial1Start")
+            return
+        end
     elseif env(301, 0) == TRUE or env("アニメ終了か", 1) == TRUE then
         act("特殊補間設定", 0, TRUE)
         ExecEventAllBody("W_AttackRightHeavy1Start")
@@ -7277,13 +7284,15 @@ function AttackRightHeavy1Start_onUpdate() -- >30320
     end
     if AttackCommonFunction(r1, "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
         return
-    -- Trick - 4 Stage heavy attack 
-    elseif env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
-        ExecEventAllBody("W_AttackRightHeavy1End")
-        return
-    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
-        ExecEventAllBody("W_AttackRightHeavySpecial1Start")
-        return
+    -- Trick - 4 Stage heavy attack
+    elseif isExtended1HR1() == SawCleaver or ThreadedCane then
+        if env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
+            ExecEventAllBody("W_AttackRightHeavy1End")
+            return
+        elseif env(1116, 100974) == TRUE then
+            ExecEventAllBody("W_AttackRightHeavySpecial1Start")
+            return
+        end
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackRightHeavy1End")
         return 
@@ -7299,9 +7308,11 @@ function AttackRightHeavy1End_onUpdate() -- >30321
     end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy2Start", "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
         return
-    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
-        ExecEventAllBody("W_AttackRightHeavySpecial1End")
-        return
+    elseif isExtended1HR1() == SawCleaver or ThreadedCane then
+        if env(1116, 100974) == TRUE then
+            ExecEventAllBody("W_AttackRightHeavySpecial1End")
+            return
+        end
     else
         return 
     end
@@ -7363,6 +7374,8 @@ function AttackRightHeavySpecial1Start_onUpdate() -- >30350
     if isExtended1HR1() == SawCleaver then
         r2 = "W_AttackRightHeavy1SubStart"
         r1 = "W_AttackRightLight2"
+    elseif isExtended1HR1() == ThreadedCane then
+        r2 = "W_AttackRightHeavy1SubStart"
     elseif sp_kind == 161 then
         b2 = "W_AttackBothHeavy1Start"
     end
@@ -7390,6 +7403,8 @@ function AttackRightHeavySpecial1End_onUpdate() -- >30351
     if isExtended1HR1() == SawCleaver then
         r2 = "W_AttackRightHeavy1SubStart"
         r1 = "W_AttackRightLight2"
+    elseif isExtended1HR1() == ThreadedCane then
+        r2 = "W_AttackRightHeavy1SubStart"
     end
     if AttackCommonFunction(r1, r2, "W_AttackLeftLight1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
         return 
@@ -7683,6 +7698,8 @@ function AttackBothLight1_onUpdate() -- >34000
     end
     if env("装備武器特殊カテゴリ番号取得", hand) == 232 then
         b2 = "W_AttackBothHeavy2Start"
+    elseif isExtended1HR1() == ThreadedCane then
+        b2 = "W_AttackBothHeavy1Start"
     end
     if AttackCommonFunction("W_AttackRightLight2", "W_AttackRightHeavy1Start", "W_AttackBothLeft2", "W_AttackLeftHeavy1", "W_AttackBothLight2", b2, FALSE, TRUE) == TRUE then
         return 
@@ -7693,10 +7710,14 @@ end
 
 function AttackBothLight2_onUpdate() -- >34010
     -- Force to Idle - 2H Second R1
+    local b2 = "W_AttackBothHeavy1Start"
     if env(1116, 100972) == TRUE then
         ExecEventAllBody("W_Idle")
     end
-    if AttackCommonFunction("W_AttackRightLight3", "W_AttackRightHeavy1Start", "W_AttackBothLeft3", "W_AttackLeftHeavy1", "W_AttackBothLight3", "W_AttackBothHeavy1Start", FALSE, TRUE) == TRUE then
+    if isExtended1HR1() == ThreadedCane then
+        b2 = "W_AttackBothHeavy2Start"
+    end
+    if AttackCommonFunction("W_AttackRightLight3", "W_AttackRightHeavy1Start", "W_AttackBothLeft3", "W_AttackLeftHeavy1", "W_AttackBothLight3", b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7708,6 +7729,7 @@ function AttackBothLight3_onUpdate() -- >34020
     if env(1116, 100972) == TRUE then
         ExecEventAllBody("W_Idle")
     end
+    local b2 = "W_AttackBothHeavy1SubStart"
     local b1 = "W_AttackBothLight2"
     local hand = HAND_RIGHT
     local style = c_Style
@@ -7721,11 +7743,13 @@ function AttackBothLight3_onUpdate() -- >34020
     -- Farron Greatsword - Third 2H R1 transition into
     elseif sp_kind == 161 then
         b1 = "W_AttackBothBackstep"
+    elseif isExtended1HR1() == ThreadedCane then
+        b2 = "W_AttackBothHeavy1Start"
     end
     if env(1116, 100440) == TRUE then
         act(2001, 0.699999988079071)
     end
-    if AttackCommonFunction("W_AttackRightLight2", "W_AttackRightHeavy1Start", "W_AttackBothLeft2", "W_AttackLeftHeavy1", b1, "W_AttackBothHeavy1SubStart", FALSE, TRUE) == TRUE then
+    if AttackCommonFunction("W_AttackRightLight2", "W_AttackRightHeavy1Start", "W_AttackBothLeft2", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE) == TRUE then
         return 
     else
         return 
@@ -7839,13 +7863,18 @@ function AttackBothHeavy1SubStart_onUpdate() -- >34330
     end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", "W_AttackBothLight1", "W_AttackBothHeavy2Start", FALSE, TRUE) == TRUE then
         return
-    -- Trick - Tricked - 4 Stage heavy attack - Transition 
-    elseif env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
-        ExecEventAllBody("W_AttackBothHeavy1End")
+    -- Trick - Tricked - 4 Stage heavy attack - Transition
+    elseif isExtended1HR1() == SawCleaver then 
+        if env(1108, ACTION_ARM_R2) > 0 and env(1116, 100975) == TRUE then
+            ExecEventAllBody("W_AttackBothHeavy1End")
+            return
+        elseif env(1116, 100974) == TRUE then
+            ExecEventAllBody("W_AttackBothHeavySpecial1Start")
+            return
+        end
+    elseif isExtended1HR1() == ThreadedCane then
+        ExecEventAllBody("W_AttackBothHeavy1Start")
         return
-    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
-        ExecEventAllBody("W_AttackBothHeavySpecial1Start")
-        return 
     elseif env(301, 0) == TRUE or env("アニメ終了か", 1) == TRUE then
         act("特殊補間設定", 0, TRUE)
         ExecEventAllBody("W_AttackBothHeavy1Start")
@@ -7882,12 +7911,14 @@ function AttackBothHeavy1Start_onUpdate() -- >34320
             ExecEventAllBody("W_AttackRightLight1")
             return
         end
-    elseif isExtended1HR1() == SawCleaver and env(1108, ACTION_ARM_R2) >= 100 and env(1116, 100975) == TRUE then
-        ExecEventAllBody("W_AttackBothHeavy1End")
-        return
-    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
-        ExecEventAllBody("W_AttackBothHeavySpecial1Start")
-        return 
+    elseif isExtended1HR1() == SawCleaver then 
+        if env(1108, ACTION_ARM_R2) >= 100 and env(1116, 100975) == TRUE then
+            ExecEventAllBody("W_AttackBothHeavy1End")
+            return
+        elseif env(1116, 100974) == TRUE then
+            ExecEventAllBody("W_AttackBothHeavySpecial1Start")
+            return
+        end 
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackBothHeavy1End")
         return 
@@ -7923,6 +7954,10 @@ function AttackBothHeavy1End_onUpdate() -- >34321
 end
 
 function AttackBothHeavy2Start_onUpdate() -- >34340
+    -- Force to Idle - 2H Heavy2Start
+    if env(1116, 100972) == TRUE then
+        ExecEventAllBody("W_Idle")
+    end
     local b2 = "W_AttackBothHeavy1Start"
     local b1 = "W_AttackBothLight1"
     local hand = HAND_RIGHT
@@ -7934,6 +7969,8 @@ function AttackBothHeavy2Start_onUpdate() -- >34340
     if sp_kind == 161 then 
         b2 = nil
         b1 = "W_AttackBothLight3"
+    elseif isExtended1HR1() == ThreadedCane then
+        b1 = "W_AttackBothLight2" 
     end
     if AttackCommonFunction("W_AttackRightLight1", "W_AttackRightHeavy1Start", "W_AttackBothLeft1", "W_AttackLeftHeavy1", b1, b2, FALSE, TRUE) == TRUE then
         return 
@@ -7941,12 +7978,14 @@ function AttackBothHeavy2Start_onUpdate() -- >34340
         ExecEventAllBody("W_AttackBothHeavy2End")
         return
     -- Trick - Tricked - 4 Stage heavy attack 
-    elseif isExtended1HR1() == SawCleaver and env(1108, ACTION_ARM_R2) >= 100 and env(1116, 100975) == TRUE then
-        ExecEventAllBody("W_AttackBothHeavy2End")
-        return
-    elseif isExtended1HR1() == SawCleaver and env(1116, 100974) == TRUE then
-        ExecEventAllBody("W_AttackBothHeavySpecial2Start")
-        return 
+    elseif isExtended1HR1() == SawCleaver then
+        if env(1108, ACTION_ARM_R2) >= 100 and env(1116, 100975) == TRUE then
+            ExecEventAllBody("W_AttackBothHeavy2End")
+            return
+        elseif env(1116, 100974) == TRUE then
+            ExecEventAllBody("W_AttackBothHeavySpecial2Start")
+            return
+        end 
     elseif env(1108, ACTION_ARM_R2) <= 0 and env(1116, 100280) == TRUE then
         ExecEventAllBody("W_AttackBothHeavy2End")
         return      
