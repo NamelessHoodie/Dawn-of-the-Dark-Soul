@@ -1,0 +1,2 @@
+Release/Mod/sfx/*.dcx filter=lfs diff=lfs merge=lfs -text
+Release/Mod/chr/c0000_dlc2.anibnd.dcx filter=lfs diff=lfs merge=lfs -text
