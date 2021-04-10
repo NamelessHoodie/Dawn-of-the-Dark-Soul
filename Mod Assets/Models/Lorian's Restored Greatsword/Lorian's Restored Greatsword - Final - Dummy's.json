@@ -1,0 +1,191 @@
+[
+    {
+        "Position": {
+            "X": 1.37934251E-07,
+            "Y": -1.66778386,
+            "Z": -1.25774974E-07
+        },
+        "Forward": {
+            "X": -2.6576302E-08,
+            "Y": -0.11146903,
+            "Z": 6.1899E-08
+        },
+        "Upward": {
+            "X": 8.415753E-09,
+            "Y": 0,
+            "Z": -0.0557345524
+        },
+        "ReferenceID": 100,
+        "DummyBoneIndex": 0,
+        "AttachBoneIndex": -1,
+        "Unk0C": 255,
+        "Unk0D": 255,
+        "Unk0E": -1,
+        "Flag1": false,
+        "Flag2": true,
+        "Unk30": 0,
+        "Unk34": 0
+    },
+    {
+        "Position": {
+            "X": -1.74655526E-08,
+            "Y": -0.7812233,
+            "Z": 2.72977623E-08
+        },
+        "Forward": {
+            "X": -1.91349585E-08,
+            "Y": -0.08025777,
+            "Z": 4.507663E-08
+        },
+        "Upward": {
+            "X": 6.059288E-09,
+            "Y": 0,
+            "Z": -0.0401288755
+        },
+        "ReferenceID": 110,
+        "DummyBoneIndex": 0,
+        "AttachBoneIndex": -1,
+        "Unk0C": 255,
+        "Unk0D": 255,
+        "Unk0E": -1,
+        "Flag1": false,
+        "Flag2": true,
+        "Unk30": 0,
+        "Unk34": 0
+    },
+    {
+        "Position": {
+            "X": 1.53298885E-08,
+            "Y": -0.265353441,
+            "Z": -6.50223E-09
+        },
+        "Forward": {
+            "X": 4.28777E-09,
+            "Y": -0.11146915,
+            "Z": 1.58891E-08
+        },
+        "Upward": {
+            "X": -4.87246865E-09,
+            "Y": 0,
+            "Z": -0.0557345524
+        },
+        "ReferenceID": 120,
+        "DummyBoneIndex": 0,
+        "AttachBoneIndex": -1,
+        "Unk0C": 255,
+        "Unk0D": 255,
+        "Unk0E": -1,
+        "Flag1": false,
+        "Flag2": true,
+        "Unk30": 0,
+        "Unk34": 0
+    },
+    {
+        "Position": {
+            "X": -3.13645465E-08,
+            "Y": 0.268768668,
+            "Z": 3.08890975E-08
+        },
+        "Forward": {
+            "X": -9.744944E-09,
+            "Y": -0.11146912,
+            "Z": 4.699784E-08
+        },
+        "Upward": {
+            "X": 0,
+            "Y": -2.98023224E-08,
+            "Z": -0.0557345562
+        },
+        "ReferenceID": 122,
+        "DummyBoneIndex": 0,
+        "AttachBoneIndex": -1,
+        "Unk0C": 255,
+        "Unk0D": 255,
+        "Unk0E": -1,
+        "Flag1": false,
+        "Flag2": true,
+        "Unk30": 0,
+        "Unk34": 0
+    },
+    {
+        "Position": {
+            "X": -5.48235235E-08,
+            "Y": -1.24650908,
+            "Z": 6.557002E-08
+        },
+        "Forward": {
+            "X": -1.91350225E-08,
+            "Y": -0.08025777,
+            "Z": 4.520058E-08
+        },
+        "Upward": {
+            "X": 6.059288E-09,
+            "Y": 0,
+            "Z": -0.04012888
+        },
+        "ReferenceID": 130,
+        "DummyBoneIndex": 0,
+        "AttachBoneIndex": -1,
+        "Unk0C": 255,
+        "Unk0D": 255,
+        "Unk0E": -1,
+        "Flag1": false,
+        "Flag2": true,
+        "Unk30": 0,
+        "Unk34": 0
+    },
+    {
+        "Position": {
+            "X": 0,
+            "Y": -0.37735343,
+            "Z": 0
+        },
+        "Forward": {
+            "X": 0,
+            "Y": -0.170250177,
+            "Z": 2.02499E-09
+        },
+        "Upward": {
+            "X": 0,
+            "Y": 0,
+            "Z": -0.0729395449
+        },
+        "ReferenceID": 300,
+        "DummyBoneIndex": 1,
+        "AttachBoneIndex": -1,
+        "Unk0C": 255,
+        "Unk0D": 255,
+        "Unk0E": -1,
+        "Flag1": false,
+        "Flag2": true,
+        "Unk30": 0,
+        "Unk34": 0
+    },
+    {
+        "Position": {
+            "X": 0,
+            "Y": -1.81558585,
+            "Z": 0
+        },
+        "Forward": {
+            "X": 0,
+            "Y": -0.170250177,
+            "Z": 2.02499E-09
+        },
+        "Upward": {
+            "X": 0,
+            "Y": 0,
+            "Z": -0.0729395449
+        },
+        "ReferenceID": 301,
+        "DummyBoneIndex": 1,
+        "AttachBoneIndex": -1,
+        "Unk0C": 255,
+        "Unk0D": 255,
+        "Unk0E": -1,
+        "Flag1": false,
+        "Flag2": true,
+        "Unk30": 0,
+        "Unk34": 0
+    }
+]
