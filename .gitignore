@@ -1,5 +1,13 @@
-DotDSDev/**/*.dcx
+DotDSDev/**/*.anibnd.dcx
+DotDSDev/**/*.tpf.dcx
+DotDSDev/**/*.msgbnd.dcx
+DotDSDev/**/*.mtdbnd.dcx
+DotDSDev/**/*.partsbnd.dcx
+DotDSDev/**/*.talkesdbnd.dcx
+DotDSDev/**/*.ffxbnd.dcx
 DotDSDev/**/*.tpf
 DotDSDev/**/*.anibnd
-DotDSDev/**/*.bak
 DotDSDev/**/*.fmg
+DotDSDev/**/*.chrbnd.dcx
+DotDSDev/**/*.behbnd.dcx
+DotDSDev/**/*.bak
