@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bnd4>
+  <filename>wp_a_0833_l.partsbnd.dcx</filename>
+  <compression>DarkSouls3</compression>
+  <timestamp>07D7R6</timestamp>
+  <format>0x74</format>
+  <bigendian>False</bigendian>
+  <flag1>False</flag1>
+  <flag2>False</flag2>
+  <unicode>True</unicode>
+  <extended>0x00</extended>
+  <files>
+    <file>
+      <flags>0x40</flags>
+      <id>100</id>
+      <root>N:\FDP\data\INTERROOT_win64\</root>
+      <path>parts\Weapon\WP_A_0833\WP_A_0833.tpf</path>
+    </file>
+    <file>
+      <flags>0x40</flags>
+      <id>200</id>
+      <root>N:\FDP\data\INTERROOT_win64\</root>
+      <path>parts\Weapon\WP_A_0833\WP_A_0833.flver</path>
+    </file>
+    <file>
+      <flags>0x40</flags>
+      <id>202</id>
+      <root>N:\FDP\data\INTERROOT_win64\</root>
+      <path>parts\Weapon\WP_A_0833\WP_A_0833_2.flver</path>
+    </file>
+    <file>
+      <flags>0x40</flags>
+      <id>400</id>
+      <root>N:\FDP\data\INTERROOT_win64\</root>
+      <path>parts\Weapon\WP_A_0833\WP_A_0833.anibnd</path>
+    </file>
+    <file>
+      <flags>0x40</flags>
+      <id>402</id>
+      <root>N:\FDP\data\INTERROOT_win64\</root>
+      <path>parts\Weapon\WP_A_0833\WP_A_0833_2.anibnd</path>
+    </file>
+  </files>
+</bnd4>

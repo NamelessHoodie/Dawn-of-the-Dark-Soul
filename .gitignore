@@ -1,3 +1,5 @@
-*.dcx
-*.tpf
-*.anibnd
+DotDSDev/**/*.dcx
+DotDSDev/**/*.tpf
+DotDSDev/**/*.anibnd
+DotDSDev/**/*.bak
+DotDSDev/**/*.fmg
